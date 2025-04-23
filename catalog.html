@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Каталог игр | Sufradisk</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            text-align: center;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #00e1ff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .catalog-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ff1493;
+            margin-top: 60px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .catalog-subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 0 30px 50px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .game {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        .game:hover {
+            transform: translateY(-5px);
+        }
+
+        .game img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .game h3 {
+            font-size: 1.1rem;
+            margin: 0 0 10px;
+        }
+
+        .game button {
+            background-color: #ff1493;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .game button:hover {
+            background-color: #e01383;
+        }
+
+        .back-btn {
+            margin: 40px auto;
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #2cd7f2;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background-color: #10688b;
+        }
+
+        /* Тёмная тема */
+        .dark-theme {
+            background-color: #111;
+            color: #f1f1f1;
+        }
+
+        .dark-theme .game {
+            background-color: #1e1e1e;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+        }
+
+        .dark-theme .catalog-title {
+            color: #00e1ff;
+        }
+
+        .dark-theme .catalog-subtitle {
+            color: #aaa;
+        }
+
+        .light-theme {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeIcon">🌙</button>
+
+    <h1 class="catalog-title">🎮 Каталог игр</h1>
+    <p class="catalog-subtitle">Больше игр для тебя — выбирай любую и играй прямо сейчас!</p>
+
+    <div class="game-grid">
+        <div class="game">
+            <img src="diamond.jpg" alt="Game 1">
+            <h3>Merge Diamonds!</h3>
+            <button onclick="loadGame('https://html5.gamemonetize.co/z4fspnywdaanz9x1riy3cfewfmov04w9/')">Играть</button>
+        </div>
+        <div class="game">
+            <img src="basketball_park.jpg" alt="Game 2">
+            <h3>Basketball Park</h3>
+            <button onclick="loadGame('https://html5.gamemonetize.co/kyn5fpfwlh86jgcsff85trjsxntpva2i/')">Играть</button>
+        </div>
+        <div class="game">
+            <img src="cameramen.jpg" alt="Game 3">
+            <h3>Skibidi & Cameramen</h3>
+            <button onclick="loadGame('https://html5.gamemonetize.co/4b5t5xufy19syzomrxd0rgnbkibpb6oy/')">Играть</button>
+        </div>
+        <div class="game">
+            <img src="craft_noob.jpg" alt="Game 4">
+            <h3>Noob Escape</h3>
+            <button onclick="loadGame('https://html5.gamemonetize.co/cdrpiqunc6mzwflgkdphkohu3lldfv0c/')">Играть</button>
+        </div>
+        <div class="game">
+            <img src="sort puzzle.jpg" alt="Game 5">
+            <h3>Color hoop</h3>
+            <button onclick="loadGame('https://html5.gamemonetize.co/q2fcgyk3dtprdnf8279v45ssixlwqi9v/')">Играть</button>
+        </div>
+        <div class="game">
+            <img src="grass_ranch.jpg" alt="Game 5">
+            <h3>Grass ranch</h3>
+            <button onclick="loadGame('https://html5.gamemonetize.co/jfku2chwk30oquvngfwfnm4pqrajvtu3/')">Играть</button>
+        </div>
+        <div class="game">
+            <img src="tictak.jpg" alt="Game 6">
+            <h3>Tic Tac to</h3>
+            <button onclick="loadGame('https://html5.gamemonetize.co/vhwpg74ut6qx4jpq2zaun36b5083v3i4/')">Играть</button>
+        </div>
+        <div class="game">
+            <img src="spunki.jpg" alt="Game 7">
+            <h3>Spunki Monster Hunt</h3>
+            <button onclick="loadGame('https://html5.gamemonetize.co/2e7evz4wy3fpjo6snrauc8bof3xzk7kr/')">Играть</button>
+        </div>
+        <!-- <div class="game">
+            <img src="img/.jpg" alt="Game 8">
+            <h3></h3>
+            <button onclick="loadGame('')">Играть</button>
+        </div>
+        <div class="game">
+            <img src="img/.jpg" alt="Game 9">
+            <h3></h3>
+            <button onclick="loadGame('')">Играть</button>
+        </div>
+        <div class="game">
+            <img src="img/.jpg" alt="Game 10">
+            <h3></h3>
+            <button onclick="loadGame('')">Играть</button>
+        </div>
+        <div class="game">
+            <img src="img/.jpg" alt="Game 11">
+            <h3></h3>
+            <button onclick="loadGame('')">Играть</button>
+        </div> -->
+    </div>
+
+    <div id="game-container" style="margin-top: 40px; display: none;">
+        <h2 style="margin-bottom: 10px;">🔻 Игра загружается ниже:</h2>
+        <iframe id="game-frame" width="100%" height="500px" style="border: none; border-radius: 12px;"></iframe>
+    </div>
+
+    <button class="back-btn" onclick="location.href='index.html'">← Назад</button>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById("themeIcon");
+            const isDark = body.classList.toggle("dark-theme");
+            body.classList.toggle("light-theme", !isDark);
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+            icon.textContent = isDark ? "☀️" : "🌙";
+        }
+
+        window.onload = () => {
+            const savedTheme = localStorage.getItem("theme") || "light";
+            document.body.classList.add(savedTheme + "-theme");
+            const icon = document.getElementById("themeIcon");
+            icon.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+        };
+
+        function loadGame(url) {
+            const gameContainer = document.getElementById("game-container");
+            const gameFrame = document.getElementById("game-frame");
+
+            gameFrame.src = url;
+            gameContainer.style.display = "block";
+            gameContainer.scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+</body>
+</html>
