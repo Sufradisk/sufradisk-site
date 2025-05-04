@@ -1,222 +1,158 @@
-/* Global Styles */
-* {
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
+}
+
+.dark-theme {
+    background-color: black;
+    color: white;
+}
+
+.light-theme {
+    background-color: #f8f9fa;
     color: #333;
-  }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  ul {
-    list-style: none;
-  }
-  
-  /* Header and Navigation */
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-  }
-  
-  nav ul {
+}
+
+.game-grid {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-  }
-  
-  nav ul li {
-    margin: 0 20px;
-  }
-  
-  nav ul li a {
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-  
-  nav ul li a:hover {
-    color: #f4a261;
-  }
-  
-  /* Main Content */
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  #hero {
-    background: url('hero-image.jpg') no-repeat center center/cover;
-    color: #fff;
-    text-align: center;
-    padding: 100px 20px;
-  }
-  
-  #hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-  }
-  
-  #hero p {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .cta-button {
-    background-color: #f4a261;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-  }
-  
-  .cta-button:hover {
-    background-color: #e76f51;
-  }
-  
-  /* Games Section */
-  #games {
-    padding: 50px 20px;
-    background-color: #fff;
-  }
-  
-  #games h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-    justify-items: center;
-  }
-  
-  .game-item img {
+    padding: 20px;
+}
+
+.game {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+    width: 200px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.dark-theme .game {
+    background: #333;
+    color: white;
+}
+
+.game img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .game-item img:hover {
-    transform: scale(1.05);
-  }
-  
-  .game-item a {
-    display: block;
-    text-align: center;
-    padding: 10px;
-    background-color: #f4a261;
-    color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
+}
+
+.game button {
     margin-top: 10px;
-  }
-  
-  .game-item a:hover {
-    background-color: #e76f51;
-  }
-  
-  /* About Section */
-  #about {
-    padding: 50px 20px;
-    background-color: #f4f4f4;
-    text-align: center;
-  }
-  
-  #about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  
-  /* Contact Section */
-  #contact {
-    padding: 50px 20px;
-    background-color: #fff;
-    text-align: center;
-  }
-  
-  #contact h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
+    background-color: #ff1493;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.game button:hover {
+    background-color: #c70039;
+}
+
+.buttons button {
+    padding: 12px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.support-btn {
+    background-color: #ff4500;
+    color: white;
+}
+
+.dark-theme .support-btn {
+    background-color: #cc3700;
+}
+
+.other-games-btn {
+    background-color: #ff69b4;
+    color: white;
+}
+
+.dark-theme .other-games-btn {
+    background-color: #d05694;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    background: #16daf8;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.dark-theme .theme-toggle {
+    background: #44fe47;
+}
+
+.donate-section {
+    margin-top: 30px;
     padding: 20px;
-    font-size: 1rem;
-  }
-  
-  /* Media Queries for Mobile */
-  @media (max-width: 768px) {
-    #hero h1 {
-      font-size: 2.5rem;
-    }
-  
-    #hero p {
-      font-size: 1.2rem;
-    }
-  
-    #games h2 {
-      font-size: 2rem;
-    }
-  
-    .game-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    nav ul {
-      flex-direction: column;
-    }
-  s
-    nav ul li {
-      margin: 10px 0;
-    }
-  
-    #hero h1 {
-      font-size: 2rem;
-    }
-  
-    #hero p {
-      font-size: 1rem;
-    }
-  
-    #games h2 {
-      font-size: 1.8rem;
-    }
-  
-    .game-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .cta-button {
-      font-size: 0.9rem;
-      padding: 8px 16px;
-    }
-  }
-  .mobile-spacer {
-    height: 150px;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    transition: background 0.3s;
 }
 
-@media (min-width: 768px) {
-    .mobile-spacer {
-        height: 0;
-    }
+.dark-theme .donate-section {
+    background: #222;
 }
 
-  
+.donate-buttons button {
+    padding: 12px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.donate-qiwi {
+    background-color: #ff8c00;
+    color: white;
+}
+
+.dark-theme .donate-qiwi {
+    background-color: #cc6e00;
+}
+
+.donate-boosty {
+    background-color: #ff1493;
+    color: white;
+}
+
+.dark-theme .donate-boosty {
+    background-color: #c70039;
+}
+
+#donate-list {
+    margin-top: 10px;
+    background: #222;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.dark-theme #donate-list {
+    background: #111;
+}
