@@ -1,163 +1,318 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Сайт на обновлении</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Game Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
+      margin: 0;
       font-family: 'Orbitron', sans-serif;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: linear-gradient(135deg, #1e1e60, #3a0ca3, #4361ee);
+      color: white;
       text-align: center;
-      background: linear-gradient(270deg, #6a11cb, #2575fc, #6a11cb);
-      background-size: 600% 600%;
-      animation: gradientShift 10s ease infinite;
-      overflow: hidden;
     }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .emoji {
-      font-size: 4rem;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .countdown {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin: 20px 0;
-      text-shadow: 0 0 10px #fff, 0 0 20px #00eaff, 0 0 40px #0077ff;
-      animation: glowPulse 1.5s infinite alternate;
-    }
-
-    @keyframes glowPulse {
-      from { text-shadow: 0 0 10px #fff, 0 0 20px #00eaff, 0 0 40px #0077ff; }
-      to { text-shadow: 0 0 20px #fff, 0 0 30px #00eaff, 0 0 60px #0077ff; }
-    }
-
-    .finished {
+    header {
+      padding: 20px;
       font-size: 2rem;
       font-weight: bold;
-      color: #00ffae;
-      animation: scaleUp 1s ease forwards;
+      text-shadow: 0 0 10px #7209b7;
     }
-
-    @keyframes scaleUp {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      padding: 20px;
     }
-
-    .form-control {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: #fff;
+    .game-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px solid #4cc9f0;
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 0 0 20px rgba(114,9,183,0.7);
+      transition: transform 0.2s;
     }
-
-    .form-control:focus {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: #00eaff;
-      box-shadow: 0 0 10px #00eaff;
-      color: #fff;
+    .game-card:hover {
+      transform: scale(1.03);
     }
-
-    .btn-custom {
-      background: linear-gradient(90deg, #00eaff, #6a11cb);
+    canvas {
+      background: black;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
       border: none;
+      border-radius: 8px;
+      background: #7209b7;
       color: white;
+      cursor: pointer;
       font-weight: bold;
-      transition: transform 0.3s ease;
+      transition: 0.3s;
     }
-
-    .btn-custom:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00eaff;
+    button:hover {
+      background: #4361ee;
+    }
+    .story-box {
+      margin: 40px auto;
+      max-width: 800px;
+      padding: 20px;
+      border-radius: 20px;
+      border: 2px solid #f72585;
+      box-shadow: 0 0 25px #f72585;
+      background: rgba(0,0,0,0.4);
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 20px #f72585; }
+      to { box-shadow: 0 0 40px #4cc9f0; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="emoji">🛠️</div>
-    <h1>Сайт на реконструкции</h1>
-    <p class="lead">Мы делаем портал круче!<br>Возвращайтесь <strong>30 августа 2025 года</strong> — вас ждут новые игры!</p>
+  <header>🎮 Cool Game Portal</header>
 
-    <div id="countdown" class="countdown">Загрузка...</div>
-    <div id="finishedMessage" class="finished d-none">🎉 Поздравляем! Время вышло! 🎉</div>
+  <div class="games">
+    <!-- Game 1: Click the Box -->
+    <div class="game-card">
+      <h2>Click the Box</h2>
+      <canvas id="clickBox" width="300" height="200"></canvas>
+      <p id="score1">Score: 0</p>
+      <button onclick="startBoxGame()">Start</button>
+    </div>
 
-    <p>Оставьте имя и email — мы напишем вам:</p>
-    <form class="row g-3 justify-content-center" style="max-width: 400px; margin: auto;"
-      action="https://formsubmit.co/khanxusanov08@gmail.com" method="POST" onsubmit="showMessage(); return true;">
-      <div class="col-12">
-        <input type="text" name="Имя" class="form-control" placeholder="Ваше имя" required>
-      </div>
-      <div class="col-12">
-        <input type="email" name="Email" class="form-control" placeholder="Ваш email" required>
-      </div>
-      <input type="hidden" name="_captcha" value="false">
-      <div class="col-12">
-        <button type="submit" class="btn btn-custom w-100">Уведомить меня ✉️</button>
-      </div>
-    </form>
+    <!-- Game 2: Simple Pong -->
+    <div class="game-card">
+      <h2>Pong</h2>
+      <canvas id="pong" width="300" height="200"></canvas>
+      <button onclick="startPong()">Start</button>
+    </div>
 
-    <div id="thankYouMessage" class="alert alert-success mt-3 d-none">Спасибо! Мы скоро с вами свяжемся! 🎉</div>
+    <!-- Game 3: Snake -->
+    <div class="game-card">
+      <h2>Snake</h2>
+      <canvas id="snake" width="300" height="200"></canvas>
+      <button onclick="startSnake()">Start</button>
+    </div>
+
+    <!-- Game 4: Flappy Bird -->
+    <div class="game-card">
+      <h2>Flappy Bird</h2>
+      <canvas id="flappy" width="300" height="200"></canvas>
+      <button onclick="startFlappy()">Start</button>
+    </div>
+
+    <!-- Game 5: Tic Tac Toe -->
+    <div class="game-card">
+      <h2>Tic Tac Toe</h2>
+      <canvas id="tictac" width="300" height="300"></canvas>
+      <button onclick="startTicTac()">Start</button>
+    </div>
+
+    <!-- Game 6: Breakout -->
+    <div class="game-card">
+      <h2>Breakout</h2>
+      <canvas id="breakout" width="300" height="200"></canvas>
+      <button onclick="startBreakout()">Start</button>
+    </div>
   </div>
 
-  <script>
-    function showMessage() {
-      setTimeout(() => {
-        document.querySelector("form").classList.add("d-none");
-        document.getElementById("thankYouMessage").classList.remove("d-none");
-      }, 500);
+  <!-- Story / Updates Section -->
+  <div class="story-box">
+    <h2>📝 Our Stories & Updates</h2>
+    <p>Yesterday we couldn’t release because we had work... but today we are back stronger 💪🔥 Stay tuned!</p>
+  </div>
+
+<script>
+// ---------------- Game 1: Click the Box ----------------
+let boxCanvas = document.getElementById("clickBox");
+let boxCtx = boxCanvas.getContext("2d");
+let score = 0, boxX, boxY;
+
+function startBoxGame(){
+  score = 0;
+  moveBox();
+}
+function moveBox(){
+  boxX = Math.random()*250;
+  boxY = Math.random()*150;
+  boxCtx.clearRect(0,0,300,200);
+  boxCtx.fillStyle = "#4cc9f0";
+  boxCtx.fillRect(boxX,boxY,50,50);
+}
+boxCanvas.addEventListener("click", e=>{
+  let rect = boxCanvas.getBoundingClientRect();
+  let x = e.clientX-rect.left;
+  let y = e.clientY-rect.top;
+  if(x>boxX && x<boxX+50 && y>boxY && y<boxY+50){
+    score++;
+    document.getElementById("score1").innerText = "Score: "+score;
+    moveBox();
+  }
+});
+
+// ---------------- Game 2: Pong ----------------
+let pongCanvas = document.getElementById("pong");
+let pongCtx = pongCanvas.getContext("2d");
+let ballX, ballY, ballVX, ballVY, paddleY;
+
+function startPong(){
+  ballX=150; ballY=100;
+  ballVX=2; ballVY=2;
+  paddleY=80;
+  requestAnimationFrame(pongLoop);
+}
+
+pongCanvas.addEventListener("mousemove", e=>{
+  let rect = pongCanvas.getBoundingClientRect();
+  paddleY = e.clientY-rect.top-30;
+});
+
+function pongLoop(){
+  pongCtx.clearRect(0,0,300,200);
+  pongCtx.fillStyle="#4cc9f0";
+  pongCtx.beginPath();
+  pongCtx.arc(ballX,ballY,10,0,Math.PI*2);
+  pongCtx.fill();
+  pongCtx.fillStyle="#f72585";
+  pongCtx.fillRect(280,paddleY,10,60);
+  ballX+=ballVX; ballY+=ballVY;
+  if(ballY<10||ballY>190) ballVY*=-1;
+  if(ballX<10) ballVX*=-1;
+  if(ballX>270 && ballY>paddleY && ballY<paddleY+60){ ballVX*=-1; }
+  requestAnimationFrame(pongLoop);
+}
+
+// ---------------- Game 3: Snake ----------------
+let snakeCanvas=document.getElementById("snake");
+let sCtx=snakeCanvas.getContext("2d");
+let snake, food, dx, dy;
+
+function startSnake(){
+  snake=[{x:150,y:100}];
+  dx=10; dy=0;
+  food={x:Math.floor(Math.random()*30)*10,y:Math.floor(Math.random()*20)*10};
+  document.addEventListener("keydown",changeDir);
+  requestAnimationFrame(snakeLoop);
+}
+function changeDir(e){
+  if(e.key=="ArrowUp"&&dy==0){dx=0;dy=-10}
+  else if(e.key=="ArrowDown"&&dy==0){dx=0;dy=10}
+  else if(e.key=="ArrowLeft"&&dx==0){dx=-10;dy=0}
+  else if(e.key=="ArrowRight"&&dx==0){dx=10;dy=0}
+}
+function snakeLoop(){
+  sCtx.clearRect(0,0,300,200);
+  let head={x:snake[0].x+dx,y:snake[0].y+dy};
+  snake.unshift(head);
+  if(head.x==food.x&&head.y==food.y){
+    food={x:Math.floor(Math.random()*30)*10,y:Math.floor(Math.random()*20)*10};
+  } else { snake.pop(); }
+  sCtx.fillStyle="#4cc9f0";
+  snake.forEach(p=>sCtx.fillRect(p.x,p.y,10,10));
+  sCtx.fillStyle="#f72585";
+  sCtx.fillRect(food.x,food.y,10,10);
+  if(head.x<0||head.x>=300||head.y<0||head.y>=200||snake.slice(1).some(p=>p.x==head.x&&p.y==head.y)) return;
+  setTimeout(()=>requestAnimationFrame(snakeLoop),100);
+}
+
+// ---------------- Game 4: Flappy Bird ----------------
+let fCanvas=document.getElementById("flappy");
+let fCtx=fCanvas.getContext("2d");
+let birdY,velocity,gravity,pipes;
+
+function startFlappy(){
+  birdY=100; velocity=0; gravity=0.5;
+  pipes=[];
+  document.addEventListener("keydown",()=>velocity=-7);
+  requestAnimationFrame(flappyLoop);
+}
+function flappyLoop(){
+  fCtx.clearRect(0,0,300,200);
+  velocity+=gravity; birdY+=velocity;
+  if(Math.random()<0.02){ let h=Math.random()*100+50; pipes.push({x:300,y:h}); }
+  pipes.forEach(p=>p.x-=2);
+  fCtx.fillStyle="#4cc9f0";
+  fCtx.beginPath(); fCtx.arc(50,birdY,10,0,Math.PI*2); fCtx.fill();
+  fCtx.fillStyle="#f72585";
+  pipes.forEach(p=>{
+    fCtx.fillRect(p.x,0,30,p.y-40);
+    fCtx.fillRect(p.x,p.y+40,30,200);
+  });
+  requestAnimationFrame(flappyLoop);
+}
+
+// ---------------- Game 5: Tic Tac Toe ----------------
+let tCanvas=document.getElementById("tictac");
+let tCtx=tCanvas.getContext("2d");
+let board, current;
+
+function startTicTac(){
+  board=[["","",""] , ["","",""] , ["","",""]];
+  current="X";
+  drawBoard();
+  tCanvas.addEventListener("click",play);
+}
+function drawBoard(){
+  tCtx.clearRect(0,0,300,300);
+  tCtx.strokeStyle="#4cc9f0"; tCtx.lineWidth=3;
+  for(let i=1;i<3;i++){ tCtx.beginPath(); tCtx.moveTo(i*100,0); tCtx.lineTo(i*100,300); tCtx.stroke(); tCtx.beginPath(); tCtx.moveTo(0,i*100); tCtx.lineTo(300,i*100); tCtx.stroke(); }
+  for(let r=0;r<3;r++) for(let c=0;c<3;c++) if(board[r][c]){
+    tCtx.fillStyle= board[r][c]=="X"?"#f72585":"#4cc9f0";
+    tCtx.font="60px Orbitron";
+    tCtx.fillText(board[r][c],c*100+30,r*100+70);
+  }
+}
+function play(e){
+  let rect=tCanvas.getBoundingClientRect();
+  let x=Math.floor((e.clientX-rect.left)/100);
+  let y=Math.floor((e.clientY-rect.top)/100);
+  if(board[y][x]==""){
+    board[y][x]=current;
+    current=current=="X"?"O":"X";
+    drawBoard();
+  }
+}
+
+// ---------------- Game 6: Breakout ----------------
+let bCanvas=document.getElementById("breakout");
+let bCtx=bCanvas.getContext("2d");
+let bx,by,bvx,bvy,paddleX,bricks;
+
+function startBreakout(){
+  bx=150;by=100;bvx=2;bvy=-2;paddleX=120;
+  bricks=[];
+  for(let r=0;r<3;r++){
+    for(let c=0;c<5;c++){
+      bricks.push({x:c*60+10,y:r*20+10,status:1});
     }
-
-    const countdownElement = document.getElementById('countdown');
-    const finishedMessage = document.getElementById('finishedMessage');
-    const targetDate = new Date("2025-08-30T00:00:00+05:00").getTime();
-
-    const timerInterval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance <= 0) {
-        clearInterval(timerInterval);
-        countdownElement.classList.add("d-none");
-        finishedMessage.classList.remove("d-none");
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownElement.textContent = `${days}д ${hours}ч ${minutes}м ${seconds}с`;
-    }, 1000);
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  }
+  bCanvas.addEventListener("mousemove",e=>{
+    let rect=bCanvas.getBoundingClientRect();
+    paddleX=e.clientX-rect.left-40;
+  });
+  requestAnimationFrame(breakoutLoop);
+}
+function breakoutLoop(){
+  bCtx.clearRect(0,0,300,200);
+  bCtx.fillStyle="#4cc9f0";
+  bCtx.beginPath();bCtx.arc(bx,by,8,0,Math.PI*2);bCtx.fill();
+  bCtx.fillStyle="#f72585";
+  bCtx.fillRect(paddleX,180,80,10);
+  bricks.forEach(b=>{
+    if(b.status){
+      bCtx.fillStyle="#7209b7";
+      bCtx.fillRect(b.x,b.y,50,15);
+      if(bx>b.x&&bx<b.x+50&&by>b.y&&by<b.y+15){bvy*=-1;b.status=0;}
+    }
+  });
+  bx+=bvx;by+=bvy;
+  if(by<0) bvy*=-1;
+  if(bx<0||bx>300) bvx*=-1;
+  if(by>180&&bx>paddleX&&bx<paddleX+80){bvy*=-1;}
+  requestAnimationFrame(breakoutLoop);
+}
+</script>
 </body>
 </html>
