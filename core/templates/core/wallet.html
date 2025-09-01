@@ -1,0 +1,55 @@
+{% extends "core/base.html" %}
+{% block content %}
+
+<h2 class="text-center mb-4">💰 Your Wallet</h2>
+
+<div class="wallet-summary">
+  <p><strong>Balance:</strong> {{ profile.currency }} currency</p>
+</div>
+
+<h3>📜 Transaction History</h3>
+<table class="wallet-table">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for tx in transactions %}
+      <tr>
+        <td>{{ tx.item_name }}</td>
+        <td>{{ tx.type }}</td>
+        <td>{{ tx.amount }}</td>
+        <td>{{ tx.created_at|date:"Y-m-d H:i" }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="4">No transactions yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<style>
+.wallet-summary {
+  padding: 15px;
+  margin-bottom: 20px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+.wallet-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.wallet-table th, .wallet-table td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.wallet-table th {
+  text-align: left;
+}
+</style>
+
+{% endblock %}

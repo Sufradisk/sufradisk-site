@@ -1,0 +1,824 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-01 00:03+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\core\forms.py:29
+msgid "I confirm I own the rights to upload this game"
+msgstr ""
+
+#: .\core\forms.py:33
+msgid "Spritted"
+msgstr "Spritted"
+
+#: .\core\forms.py:34
+msgid "GameFlare"
+msgstr "GameFlare"
+
+#: .\core\forms.py:35
+msgid "Personal"
+msgstr "Личный"
+
+#: .\core\forms.py:39
+msgid "Action"
+msgstr "Экшен"
+
+#: .\core\forms.py:40
+msgid "Adventure"
+msgstr "Приключения"
+
+#: .\core\forms.py:41
+msgid "Role-Playing Game (RPG)"
+msgstr "Ролевая игра (RPG)"
+
+#: .\core\forms.py:42
+msgid "Simulation"
+msgstr "Симулятор"
+
+#: .\core\forms.py:43
+msgid "Strategy"
+msgstr "Стратегия"
+
+#: .\core\forms.py:44
+msgid "Sports"
+msgstr "Спорт"
+
+#: .\core\forms.py:45
+msgid "Puzzle"
+msgstr "Головоломка"
+
+#: .\core\forms.py:46
+msgid "Idle / Incremental"
+msgstr "Айдл / Кликер"
+
+#: .\core\forms.py:47
+msgid "Fighting"
+msgstr "Файтинг"
+
+#: .\core\forms.py:48
+msgid "Shooter"
+msgstr "Шутер"
+
+#: .\core\forms.py:49
+msgid "Racing"
+msgstr "Гонки"
+
+#: .\core\forms.py:50
+msgid "Survival"
+msgstr "Выживание"
+
+#: .\core\forms.py:51
+msgid "Sandbox / Open World"
+msgstr "Песочница / Открытый мир"
+
+#: .\core\forms.py:52
+msgid "Platformer"
+msgstr "Платформер"
+
+#: .\core\forms.py:53
+msgid "Music / Rhythm"
+msgstr "Музыкальная / Ритм-игра"
+
+#: .\core\forms.py:54
+msgid "Stealth"
+msgstr "Стелс"
+
+#: .\core\forms.py:55
+msgid "Horror"
+msgstr "Хоррор"
+
+#: .\core\forms.py:56
+msgid "Educational"
+msgstr "Обучающая"
+
+#: .\core\forms.py:57
+msgid "Party / Casual"
+msgstr "Казуальная / Для компании"
+
+#: .\core\forms.py:58
+msgid "MMO"
+msgstr "MMO (Массовая многопользовательская онлайн-игра)"
+
+#: .\core\forms.py:59
+msgid "Endless-runner"
+msgstr "Бесконечный раннер"
+
+#: .\core\forms.py:60
+msgid "Dress-up & styling"
+msgstr "Одевалки и стиль"
+
+#: .\core\forms.py:61
+msgid "Arena Games"
+msgstr "Арена-игры"
+
+#: .\core\forms.py:64
+msgid "Source"
+msgstr "Источник"
+
+#: .\core\forms.py:65
+msgid "Genre"
+msgstr "Жанр"
+
+#: .\core\forms.py:74
+msgid "Game Name"
+msgstr "Название игры"
+
+#: .\core\forms.py:75
+msgid "Game Instructions / Description"
+msgstr "Инструкции/Описание игры"
+
+#: .\core\forms.py:76
+msgid "Game Thumbnail"
+msgstr "Миниатюра игры"
+
+#: .\core\forms.py:77
+msgid "Embed Code (iframe)"
+msgstr "Embed Code (iframe)"
+
+#: .\core\forms.py:78
+msgid "Tags (comma separated)"
+msgstr "Теги (через запятую)"
+
+#: .\core\forms.py:83
+msgid "Briefly describe the game"
+msgstr "Кратко опишите игру"
+
+#: .\core\forms.py:88
+msgid "<iframe src=\"...\"></iframe>"
+msgstr "<iframe src=\"...\"></iframe>"
+
+#: .\core\forms.py:92
+msgid "e.g. fun, multiplayer, 3D"
+msgstr "например, развлечение, многопользовательский режим, 3D"
+
+#: .\core\templates\core\about.html:4
+msgid "About — Sufradisk"
+msgstr "О нас — Суфра"
+
+#: .\core\templates\core\about.html:8
+msgid "About Us"
+msgstr "О нас"
+
+#: .\core\templates\core\about.html:10
+msgid ""
+"SUFRADISK is an online platform where creators can upload, share, and launch "
+"their games easily. Our mission is to connect developers and players in one "
+"fun and rewarding ecosystem."
+msgstr "SUFRADISK — это онлайн-платформа, где создатели могут легко загружать, делиться и выпускать свои игры. Наша миссия — объединить разработчиков и игроков в одну увлекательную и плодотворную экосистему."
+
+#: .\core\templates\core\about.html:16 .\core\templates\core\home.html:26
+msgid "For Developers"
+msgstr "Для разработчиков"
+
+#: .\core\templates\core\about.html:17
+msgid ""
+"Developers can upload their games and instantly reach players worldwide."
+msgstr "Разработчики могут загружать свои игры и мгновенно привлекать игроков по всему миру."
+
+#: .\core\templates\core\about.html:18
+msgid ""
+"You remain the full owner of your games — SUFRADISK is just your stage to "
+"shine."
+msgstr "Вы остаетесь полноправным владельцем своих игр — SUFRADISK — это просто сцена, на которой вы можете проявить себя."
+
+#: .\core\templates\core\about.html:19
+msgid ""
+"Earn money: For every 100 hours of playtime your games receive, you earn $1. "
+"For example, 10,000 hours = $100."
+msgstr "Зарабатывайте деньги: за каждые 100 часов игрового времени вы зарабатываете 1 доллар.Например, 10 000 часов = 100 $"
+
+#: .\core\templates\core\about.html:22
+msgid "Developers"
+msgstr "Для разработчиков"
+
+#: .\core\templates\core\about.html:29 .\core\templates\core\home.html:22
+msgid "For Players"
+msgstr "Для игроков"
+
+#: .\core\templates\core\about.html:30
+msgid ""
+"Players can discover new indie games, enjoy exciting adventures, and support "
+"their favorite creators."
+msgstr "Игроки могут открывать для себя новые инди-игры, наслаждаться захватывающими приключениями и поддерживать своих любимых создателей."
+
+#: .\core\templates\core\about.html:31
+msgid ""
+"You can customize your profile with backgrounds and collect rewards just by "
+"playing."
+msgstr "Вы можете настроить свой профиль с помощью фонов и собирать награды, просто играя."
+
+#: .\core\templates\core\about.html:34
+msgid "Players"
+msgstr "Для игроков"
+
+#: .\core\templates\core\about.html:41
+msgid "Rewards & Community"
+msgstr "Награды & сообщество"
+
+#: .\core\templates\core\about.html:42
+msgid "Players earn rewards while playing, which they can use inside SUFRA."
+msgstr "Во время игры игроки получают награды, которые они могут использовать внутри SUFRADISK."
+
+#: .\core\templates\core\about.html:43
+msgid "Backgrounds, items, and achievements make your journey even more fun."
+msgstr "Фоны, предметы и достижения сделают ваше путешествие еще более увлекательным."
+
+#: .\core\templates\core\about.html:46
+msgid "Rewards"
+msgstr "Награды"
+
+#: .\core\templates\core\about.html:53
+msgid "How It Works"
+msgstr "Как это работает"
+
+#: .\core\templates\core\about.html:54
+msgid "1. Developers upload their games."
+msgstr "1. Разработчики загружают свои игры."
+
+#: .\core\templates\core\about.html:55
+#, fuzzy
+#| msgid "A platform for uploading and playing games online"
+msgid "2. Players discover and play games online."
+msgstr "Платформа для загрузки и игры в игры онлайн"
+
+#: .\core\templates\core\about.html:56
+msgid "3. Developers earn money based on total playtime hours."
+msgstr "3. Разработчики зарабатывают деньги на основе общего количества часов игры."
+
+#: .\core\templates\core\about.html:57
+msgid "4. Players collect rewards and enjoy the community."
+msgstr "4. Игроки собирают награды и наслаждаются общением в сообществе."
+
+#: .\core\templates\core\about.html:63
+msgid "Behind the Project"
+msgstr "За проектом"
+
+#: .\core\templates\core\about.html:65
+msgid ""
+"I built SUFRADISK with dedication, plus some help from AI tools to speed up "
+"development and make things possible."
+msgstr "Я создал SUFRADISK с полной самоотдачей, а также с помощью инструментов искусственного интеллекта для ускорения"
+"развитие и сделать вещи возможными."
+
+#: .\core\templates\core\add_game.html:27
+msgid "Сохранить"
+msgstr "Сохранить"
+
+#: .\core\templates\core\add_game.html:31
+msgid "You do not have permission to add games."
+msgstr "У вас нет разрешения на добавление игр."
+
+#: .\core\templates\core\base.html:10
+msgid "A platform for uploading and playing games online"
+msgstr "Платформа для загрузки и игры в игры онлайн"
+
+#: .\core\templates\core\base.html:11
+msgid "games, catalog, play online, upload game, Sufra"
+msgstr "игры, каталог, играть онлайн, загрузить игру, Sufra"
+
+#: .\core\templates\core\base.html:16
+msgid "Game Platform"
+msgstr "Игровая платформа"
+
+#: .\core\templates\core\base.html:17
+msgid "Game catalog, play online or download."
+msgstr "Каталог игр, играйте онлайн или скачивайте."
+
+#: .\core\templates\core\base.html:29
+msgid "Sufra gaming platform – add and play your favorite games."
+msgstr "Игровая платформа Sufra — добавляйте и играйте в свои любимые игры."
+
+#: .\core\templates\core\base.html:68
+msgid "Home"
+msgstr "Главная"
+
+#: .\core\templates\core\base.html:69
+msgid "Catalog"
+msgstr "Каталог"
+
+#: .\core\templates\core\base.html:70
+msgid "Shop"
+msgstr "Shop"
+
+#: .\core\templates\core\base.html:72
+msgid "Inventory"
+msgstr ""
+
+#: .\core\templates\core\base.html:74
+msgid "About"
+msgstr "О Нас"
+
+#: .\core\templates\core\base.html:135
+msgid "Профиль"
+msgstr ""
+
+#: .\core\templates\core\base.html:139
+msgid "Выйти"
+msgstr ""
+
+#: .\core\templates\core\base.html:145 .\core\templates\core\base.html:324
+#: .\core\templates\registration\login.html:10
+msgid "Войти"
+msgstr ""
+
+#: .\core\templates\core\base.html:149 .\core\templates\core\base.html:332
+#: .\core\templates\registration\register.html:21
+msgid "Зарегистрироваться"
+msgstr ""
+
+#: .\core\templates\core\base.html:204
+msgid "Add Game"
+msgstr "Добавить игру"
+
+#: .\core\templates\core\base.html:206
+msgid "Theme"
+msgstr "Тема"
+
+#: .\core\templates\core\base.html:303 .\core\templates\core\home.html:10
+msgid "Добро пожаловать!"
+msgstr ""
+
+#: .\core\templates\core\base.html:304
+msgid "Закрыть"
+msgstr ""
+
+#: .\core\templates\core\base.html:311
+#: .\core\templates\registration\login.html:6
+msgid "Вход"
+msgstr ""
+
+#: .\core\templates\core\base.html:314
+#: .\core\templates\registration\register.html:6
+msgid "Регистрация"
+msgstr ""
+
+#: .\core\templates\core\catalog.html:5
+msgid "Catalog — Sufradisk"
+msgstr "Каталог — Суфра"
+
+#: .\core\templates\core\catalog.html:9
+msgid "Game Catalog"
+msgstr "Каталог игр"
+
+#: .\core\templates\core\catalog.html:18
+msgid "All"
+msgstr "Все"
+
+#: .\core\templates\core\catalog.html:21
+msgid "Most Popular"
+msgstr "Самый популярный"
+
+#: .\core\templates\core\catalog.html:24
+msgid "Newest"
+msgstr "Новейший"
+
+#: .\core\templates\core\catalog.html:27 .\core\templates\core\home.html:88
+msgid "Recommended"
+msgstr "Рекомендуется"
+
+#: .\core\templates\core\catalog.html:34
+msgid "All Genres"
+msgstr "Все жанры"
+
+#: .\core\templates\core\catalog.html:43
+msgid "Search games..."
+msgstr "Поиск игр..."
+
+#: .\core\templates\core\catalog.html:64 .\core\templates\core\home.html:93
+msgid "Play"
+msgstr "Играть"
+
+#: .\core\templates\core\catalog.html:67
+msgid "Details"
+msgstr "Подробности"
+
+#: .\core\templates\core\catalog.html:79
+msgid "Sponsored"
+msgstr "Спонсируемый"
+
+#: .\core\templates\core\catalog.html:82
+msgid "Advertisement"
+msgstr "Реклама"
+
+#: .\core\templates\core\catalog.html:87
+msgid "Your browser does not support the video tag."
+msgstr "Ваш браузер не поддерживает тег видео."
+
+#: .\core\templates\core\faq.html:4
+msgid "FAQ — Sufradisk"
+msgstr "FAQ — Суфра"
+
+#: .\core\templates\core\faq.html:8
+msgid "Frequently Asked Questions"
+msgstr "Часто задаваемые вопросы"
+
+#: .\core\templates\core\faq.html:9
+msgid ""
+"Find answers to common questions about SUFRA, whether you are a developer or "
+"a player."
+msgstr "Найдите ответы на часто задаваемые вопросы о SUFRA, независимо от того, являетесь ли вы разработчиком или игроком."
+
+#: .\core\templates\core\faq.html:16
+msgid "What is SUFRADISK?"
+msgstr "Что такое SUFRADISK?"
+
+#: .\core\templates\core\faq.html:21
+msgid ""
+"SUFRADISK is an online platform where developers upload games and players "
+"enjoy them instantly in their browser."
+msgstr "SUFRADISK — это онлайн-платформа, на которую разработчики загружают игры, а игроки мгновенно наслаждаются ими в своем браузере."
+
+#: .\core\templates\core\faq.html:30
+msgid "Is SUFRADISK free?"
+msgstr "Является ли SUFRADISK бесплатным?"
+
+#: .\core\templates\core\faq.html:35
+msgid "Yes! Playing games is free. Developers can also upload games for free."
+msgstr "Да! Играть в игры можно бесплатно. Разработчики также могут загружать игры бесплатно."
+
+#: .\core\templates\core\faq.html:44
+msgid "How do developers earn money?"
+msgstr "Как разработчики зарабатывают деньги?"
+
+#: .\core\templates\core\faq.html:49
+msgid ""
+"Developers earn $1 for every 100 hours of total playtime across their games. "
+"For example, 10,000 hours = $100."
+msgstr ""
+
+#: .\core\templates\core\faq.html:58
+msgid "Do developers keep ownership of their games?"
+msgstr "Сохраняют ли разработчики права собственности на свои игры?"
+
+#: .\core\templates\core\faq.html:63
+msgid ""
+"Yes. Developers keep full rights to their games. SUFRADISK is only a "
+"platform to showcase them."
+msgstr "Да. Разработчики сохраняют за собой все права на свои игры. SUFRADISK — это всего лишь платформа для их демонстрации."
+
+#: .\core\templates\core\faq.html:72
+msgid "What kind of rewards can players get?"
+msgstr "Какие награды могут получить игроки?"
+
+#: .\core\templates\core\faq.html:77
+msgid ""
+"Players can collect backgrounds, inventory items, and achievements that "
+"personalize their experience."
+msgstr "Игроки могут собирать фоны, предметы инвентаря и достижения, которые персонализируют их игровой опыт."
+
+#: .\core\templates\core\faq.html:86
+msgid "How do I upload my game?"
+msgstr "Как мне загрузить свою игру?"
+
+#: .\core\templates\core\faq.html:91
+msgid ""
+"Simply sign up, go to your dashboard, and use the 'Upload Game' feature."
+msgstr "Просто зарегистрируйтесь, перейдите в свою панель управления и воспользуйтесь функцией «Загрузить игру."
+"Надо помнит что игры можно загрузить только в iframe(embed) формате"
+
+#: .\core\templates\core\game_detail.html:118
+msgid "Отзывы игроков:"
+msgstr ""
+
+#: .\core\templates\core\game_detail.html:136
+msgid "Пока нет отзывов. Будь первым!"
+msgstr ""
+
+#: .\core\templates\core\game_detail.html:142
+msgid "Оставить отзыв:"
+msgstr ""
+
+#: .\core\templates\core\game_detail.html:166
+msgid "Ваша оценка:"
+msgstr ""
+
+#: .\core\templates\core\game_detail.html:182
+#: .\core\templates\registration\send_code.html:12
+msgid "Отправить"
+msgstr ""
+
+#: .\core\templates\core\home.html:11
+msgid "Добавьте свою игру или посмотрите каталог."
+msgstr ""
+
+#: .\core\templates\core\home.html:14
+msgid "Play. Download. Earn."
+msgstr "Играй.  Загружай. Зарабатывай."
+
+#: .\core\templates\core\home.html:16
+msgid ""
+"SUFRA is a gaming platform where users can play HTML5 games, and developers "
+"can upload their projects, earn money and share them with the world."
+msgstr ""
+"SUFRA — это игровая платформа, где пользователи могут играть в HTML5-игры, а "
+"разработчикимогут загружать свои проекты, зарабатывать деньги и делиться ими "
+"со всем миром"
+
+#: .\core\templates\core\home.html:23
+msgid "Играйте онлайн и получайте награды за проведенное время в играх!"
+msgstr "Играйте онлайн и получайте награды за проведенное время в играх!"
+
+#: .\core\templates\core\home.html:27
+msgid "Upload your games and earn money from your developer page."
+msgstr ""
+"Загружайте свои игры и зарабатывайте деньги на своей странице разработчика."
+
+#: .\core\templates\core\home.html:34
+msgid "Top 10 players"
+msgstr "10 лучших игроков"
+
+#: .\core\templates\core\home.html:56
+msgid "There are no players in the ranking yet 😢"
+msgstr "В рейтинге пока нет игроков 😢"
+
+#: .\core\templates\core\home.html:96
+msgid "Read more"
+msgstr "Подробнее"
+
+#: .\core\templates\core\home.html:109
+msgid "Advertising"
+msgstr "Реклама"
+
+#: .\core\templates\core\home.html:176
+msgid "Ежедневная награда!"
+msgstr ""
+
+#: .\core\templates\core\home.html:177
+#, python-format
+msgid "You received %(daily_reward)s 💰 coins!"
+msgstr "Вы получили %(daily_reward)s 💰 монет!"
+
+#: .\core\templates\core\language_select.html:6
+msgid "Select Language"
+msgstr "Выберите язык"
+
+#: .\core\templates\core\language_select.html:9
+msgid "Choose a language"
+msgstr "Выберите язык"
+
+#: .\core\templates\core\language_select.html:13
+msgid "English"
+msgstr "Английский"
+
+#: .\core\templates\core\language_select.html:14
+msgid "Russian"
+msgstr "Русский"
+
+#: .\core\templates\core\language_select.html:15
+msgid "Uzbek"
+msgstr ""
+
+#: .\core\templates\core\language_select.html:17
+msgid "Apply"
+msgstr "Узбекский"
+
+#: .\core\templates\core\play_game.html:17
+msgid "Ваш браузер не поддерживает видео."
+msgstr ""
+
+#: .\core\templates\core\play_game.html:27
+msgid "Нажмите на кнопку ниже, чтобы скачать игру:"
+msgstr ""
+
+#: .\core\templates\core\play_game.html:29
+msgid "Скачать"
+msgstr ""
+
+#: .\core\templates\core\play_game.html:39
+msgid "Формат файла не поддерживается."
+msgstr ""
+
+#: .\core\templates\core\play_game.html:56
+msgid "Back to catalog"
+msgstr "Вернуться в каталог"
+
+#: .\core\templates\my_games.html:4
+msgid "Welcome to Sufra!"
+msgstr "Добро пожаловать в Суфру!"
+
+#: .\core\templates\my_games.html:6
+msgid "Мои игры"
+msgstr ""
+
+#: .\core\templates\my_games.html:15
+msgid "Жанр:"
+msgstr ""
+
+#: .\core\templates\my_games.html:16
+msgid "Источник:"
+msgstr ""
+
+#: .\core\templates\my_games.html:17
+msgid "Метки:"
+msgstr ""
+
+#: .\core\templates\my_games.html:20
+msgid "Подробнее"
+msgstr ""
+
+#: .\core\templates\my_games.html:27
+msgid "У вас пока нет загруженных игр."
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:170
+msgid "Avatar"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:172
+msgid "Default avatar"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:176
+msgid "Edit profile"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:177
+msgid "Upload avatar"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:178
+msgid "Delete account"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:185
+msgid "Level"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:188
+msgid "Date of registration"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:190
+msgid "Country"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:191
+msgid "Last login"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:193
+msgid "Balance"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:197
+msgid "Manage advertising"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:200
+msgid "My games"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:206
+msgid "Go to panel"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:210
+msgid "Your Referral Link:"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:216
+msgid "✅ Click to copy & share!"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:222
+msgid "Favorite games"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:242
+msgid "There are no featured games."
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:248
+msgid "My reviews"
+msgstr ""
+
+#: .\core\templates\registration\my_profile.html:256
+msgid "You haven't left any reviews yet."
+msgstr ""
+
+#: .\core\templates\registration\register.html:9
+msgid "Choose your role"
+msgstr ""
+
+#: .\core\templates\registration\register.html:11
+msgid "Select role..."
+msgstr ""
+
+#: .\core\templates\registration\register.html:12
+msgid "Player"
+msgstr ""
+
+#: .\core\templates\registration\register.html:13
+msgid "Developer"
+msgstr ""
+
+#: .\core\templates\registration\send_code.html:6
+msgid "Отправить код подтверждения"
+msgstr ""
+
+#: .\core\templates\registration\send_code.html:9
+msgid "Email"
+msgstr ""
+
+#: .\core\templates\registration\verify_code.html:5
+msgid "Введите код из письма"
+msgstr ""
+
+#: .\core\templates\registration\verify_code.html:9
+msgid "Подтвердить"
+msgstr ""
+
+#: .\core\templates\shop.html:5
+msgid "Media Shop"
+msgstr ""
+
+#: .\core\templates\shop.html:21
+#, python-format
+msgid "%(price)s currency"
+msgstr ""
+
+#: .\core\templates\shop.html:33 .\core\templates\shop.html:41
+msgid "Active"
+msgstr ""
+
+#: .\core\templates\shop.html:35
+msgid "Claim Free"
+msgstr ""
+
+#: .\core\templates\shop.html:43
+msgid "Activate"
+msgstr ""
+
+#: .\core\templates\shop.html:48
+msgid "Buy"
+msgstr ""
+
+#: .\core\templates\shop.html:52
+msgid "Not enough"
+msgstr ""
+
+#: .\core\templates\shop.html:60
+msgid "Wallet / Inventory"
+msgstr ""
+
+#: .\core\templates\upload_avatar.html:7
+msgid "Загрузить аватар"
+msgstr ""
+
+#: .\core\templates\upload_avatar.html:12
+msgid "Загрузить"
+msgstr ""
+
+#: .\core\templates\upload_avatar.html:16
+msgid "Назад в профиль"
+msgstr ""
+
+#: .\core\views.py:568
+msgid "Код подтверждения для Sufra"
+msgstr ""
+
+#: .\core\views.py:569
+msgid "Ваш код подтверждения: "
+msgstr ""
+
+#: .\core\views.py:575
+msgid "Код отправлен на ваш e-mail."
+msgstr ""
+
+#: .\core\views.py:600
+msgid "Пароли не совпадают"
+msgstr ""
+
+#: .\core\views.py:607
+msgid "Пароль успешно обновлён"
+msgstr ""
+
+#~ msgid ""
+#~ "SUFRA is a platform for uploading and launching games online, made with "
+#~ "heart ❤️"
+#~ msgstr ""
+#~ "SUFRA — это платформа для загрузки и запуска игр онлайн, созданная с "
+#~ "сердцем ❤️"
+
+#~ msgid "FAQ"
+#~ msgstr "FAQ"
+
+#~ msgid "Here you will find answers to the most frequently asked questions."
+#~ msgstr "Здесь вы найдете ответы на наиболее часто задаваемые вопросы."

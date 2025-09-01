@@ -1,0 +1,96 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "About — Sufradisk" %}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-info mb-4 text-center">{% trans "About Us" %}</h1>
+    <p class="lead text-center mb-5">
+        {% trans "SUFRADISK is an online platform where creators can upload, share, and launch their games easily. Our mission is to connect developers and players in one fun and rewarding ecosystem." %}
+    </p>
+
+    <!-- For Developers -->
+    <div class="row align-items-center mb-5 fade-in">
+        <div class="col-md-6">
+            <h2 class="text-primary">{% trans "For Developers" %}</h2>
+            <p>{% trans "Developers can upload their games and instantly reach players worldwide." %}</p>
+            <p>{% trans "You remain the full owner of your games — SUFRADISK is just your stage to shine." %}</p>
+            <p class="fw-bold">{% trans "Earn money: For every 100 hours of playtime your games receive, you earn $1. For example, 10,000 hours = $100." %}</p>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="/static/images/developers.png" class="img-fluid rounded shadow" alt="{% trans 'Developers' %}">
+        </div>
+    </div>
+
+    <!-- For Players -->
+    <div class="row align-items-center mb-5 fade-in">
+        <div class="col-md-6 order-md-2">
+            <h2 class="text-success">{% trans "For Players" %}</h2>
+            <p>{% trans "Players can discover new indie games, enjoy exciting adventures, and support their favorite creators." %}</p>
+            <p>{% trans "You can customize your profile with backgrounds and collect rewards just by playing." %}</p>
+        </div>
+        <div class="col-md-6 text-center order-md-1">
+            <img src="/static/images/players.png" class="img-fluid rounded shadow" alt="{% trans 'Players' %}">
+        </div>
+    </div>
+
+    <!-- Rewards -->
+    <div class="row align-items-center mb-5 fade-in">
+        <div class="col-md-6">
+            <h2 class="text-warning">{% trans "Rewards & Community" %}</h2>
+            <p>{% trans "Players earn rewards while playing, which they can use inside SUFRA." %}</p>
+            <p>{% trans "Backgrounds, items, and achievements make your journey even more fun." %}</p>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="/static/images/rewards.png" class="img-fluid rounded shadow" alt="{% trans 'Rewards' %}">
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="row align-items-center fade-in">
+        <div class="col-md-12 text-center">
+            <h2 class="text-info">{% trans "How It Works" %}</h2>
+            <p>{% trans "1. Developers upload their games." %}</p>
+            <p>{% trans "2. Players discover and play games online." %}</p>
+            <p>{% trans "3. Developers earn money based on total playtime hours." %}</p>
+            <p>{% trans "4. Players collect rewards and enjoy the community." %}</p>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5 p-4 bg-black rounded shadow-sm">
+  <h3 class="text-secondary">{% trans "Behind the Project" %}</h3>
+  <p>
+    {% trans "I built SUFRADISK with dedication, plus some help from AI tools to speed up development and make things possible." %}
+  </p>
+</div>
+
+
+<style>
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-in-out;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const faders = document.querySelectorAll('.fade-in');
+    function showElements() {
+        faders.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 50) {
+                el.classList.add("visible");
+            }
+        });
+    }
+    window.addEventListener("scroll", showElements);
+    showElements();
+});
+</script>
+{% endblock %}

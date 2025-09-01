@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block content %}
+  <div class="container">
+    <h1>{% trans "Отправить код подтверждения" %}</h1>
+    <form method="post">
+      {% csrf_token %}
+      <label for="email">{% trans "Email" %}</label>
+      <input type="email" name="email" id="email" required>
+
+      <button type="submit">{% trans "Отправить" %}</button>
+    </form>
+  </div>
+{% endblock %}

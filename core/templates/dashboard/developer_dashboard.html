@@ -1,0 +1,118 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .dashboard-header {
+    background: linear-gradient(90deg, #4b6cb7, #182848);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .card-custom {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .btn-primary {
+    background-color: #4b6cb7;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: #3b5a99;
+  }
+</style>
+
+<div class="container mt-4">
+  <div class="dashboard-header mb-4">
+    <h2>Developer Dashboard</h2>
+    <p>Welcome, {{ request.user.first_name }}! Manage your games and track performance here.</p>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card card-custom text-center p-3">
+        <h4>Total Playtime</h4>
+        <p class="display-6">{{ dev_total_hours|default:"0H 0M" }}</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card card-custom text-center p-3">
+        <h4>Total Games</h4>
+        <p class="display-6">{{ games.count }}</p>
+      </div>
+    </div>
+  </div>
+  {% for game in games %}
+  <div class="p-4 bg-gray-800 rounded-lg mb-4">
+      <h2 class="text-lg font-bold text-white">{{ game.name }}</h2>
+      <p class="text-gray-400">{{ game.description|truncatewords:20 }}</p>
+
+      <div class="mt-2 flex space-x-2">
+          <a href="{% url 'edit_game' game.id %}" class="px-3 py-1 bg-blue-500 text-white rounded">✏️ Edit</a>
+          <a href="{% url 'promote_game' game.id %}" class="px-3 py-1 bg-green-500 text-white rounded">🚀 Promote</a>
+      </div>
+  </div>
+{% endfor %}
+
+
+  <div class="card card-custom p-4 mb-4">
+    <h4>Your Games</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Game</th>
+          <th>Genre</th>
+          <th>Promoted Until</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for game in games %}
+        <tr>
+          <td>{{ game.name }}</td>
+          <td>{{ game.genre|default:"N/A" }}</td>
+          <td>
+            {% if game.is_recommended and game.recommended_until %}
+              {{ game.recommended_until|date:"Y-m-d H:i" }}
+            {% else %}
+              Not Promoted
+            {% endif %}
+          </td>
+          <td>
+            <a href="{% url 'promote_game' game.id %}" class="btn btn-sm btn-warning">🚀 Promote</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4">You have not uploaded any games yet.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{% url 'upload_game' %}" class="btn btn-primary mt-3">Upload New Game</a>
+    <div class="currency-box">💰 {{ currency }}</div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if daily_reward %}
+<script>
+Swal.fire({
+  title: "🎁 Daily Reward!",
+  text: "You received {{ daily_reward }} 💰 coins!",
+  icon: "success",
+  showConfirmButton: false,
+  timer: 3000,
+  backdrop: `
+    rgba(0,0,123,0.4)
+    url("https://media.giphy.com/media/5VKbvrjxpVJCM/giphy.gif")
+    left top
+    no-repeat
+  `
+});
+</script>
+{% endif %}
+
+{% endblock %}

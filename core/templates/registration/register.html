@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>{% trans "Регистрация" %}</h2>
+
+<!--  <div class="mb-3">-->
+<!--  <label for="id_role" class="form-label">{% trans "Choose your role" %}</label>-->
+<!--  <select name="role" id="id_role" class="form-select" required>-->
+<!--    <option value="" selected disabled>{% trans "Select role..." %}</option>-->
+<!--    <option value="player">{% trans "Player" %}</option>-->
+<!--    <option value="developer">{% trans "Developer" %}</option>-->
+<!--  </select>-->
+<!--</div>-->
+
+  <form method="post">
+    {% csrf_token %}
+      <p>Token: {{ csrf_token }}</p>
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">{% trans "Зарегистрироваться" %}</button>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,160 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Catalog — Sufradisk" %}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-info mb-4">{% trans "Game Catalog" %}</h1>
+
+    <!-- Filters Section -->
+    <form method="get" class="mb-4">
+        <div class="row g-2 align-items-center">
+
+            <!-- Filter Buttons -->
+            <div class="col-md-6 text-center text-md-start">
+                <a href="?filter=all" class="btn btn-outline-info {% if filter == 'all' %}active{% endif %}">
+                    {% trans "All" %}
+                </a>
+                <a href="?filter=popular" class="btn btn-outline-info {% if filter == 'popular' %}active{% endif %}">
+                    {% trans "Most Popular" %}
+                </a>
+                <a href="?filter=newest" class="btn btn-outline-info {% if filter == 'newest' %}active{% endif %}">
+                    {% trans "Newest" %}
+                </a>
+                <a href="?filter=recommended" class="btn btn-outline-info {% if filter == 'recommended' %}active{% endif %}">
+                    {% trans "Recommended" %}
+                </a>
+            </div>
+
+            <!-- Genre Dropdown -->
+            <div class="col-md-3">
+                <select name="genre" class="form-select" onchange="this.form.submit()">
+                    <option value="">{% trans "All Genres" %}</option>
+                    {% for g in genres %}
+                        <option value="{{ g }}" {% if g == selected_genre %}selected{% endif %}>{{ g }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Search -->
+            <div class="col-md-3">
+                <input type="text" name="q" value="{{ search_query }}" class="form-control" placeholder="{% trans 'Search games...' %}">
+            </div>
+        </div>
+    </form>
+
+    <!-- Catalog Items -->
+    <div class="row">
+        {% for item in items %}
+            {% if item.type == 'game' %}
+                <!-- Game Card -->
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
+                    <div class="card game-card h-100 text-center">
+                        {% if item.image %}
+                            <img src="{{ item.image.url }}" class="card-img-top game-img" alt="{{ item.name }}">
+                        {% else %}
+                            <img src="{% static 'img/default_game.jpg' %}" class="card-img-top game-img" alt="{{ item.name }}">
+                        {% endif %}
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ item.name }}</h5>
+                            <div class="mt-auto">
+                                <a href="{% url 'play_game' item.id %}" class="btn btn-play w-100 mb-2">
+                                    {% trans "Play" %}
+                                </a>
+                                <a href="{% url 'game_detail' item.id %}" class="btn btn-details w-100">
+                                    {% trans "Details" %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% elif item.type == 'ad' %}
+                <!-- Ad Card -->
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
+                    <div class="card game-card h-100 text-center ad-card">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h6 class="text-warning mb-3">{% trans "Sponsored" %}</h6>
+                            {% if item.media_type == 'image' %}
+                                <a href="{{ item.link }}" target="_blank">
+                                    <img src="{{ item.file.url }}" class="ad-img" alt="{% trans 'Advertisement' %}">
+                                </a>
+                            {% elif item.media_type == 'video' %}
+                                <video controls class="ad-img">
+                                    <source src="{{ item.file.url }}" type="video/mp4">
+                                    {% trans "Your browser does not support the video tag." %}
+                                </video>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+/* Shared card style */
+.game-card {
+    background-color: #1f1f1f;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+}
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Game image */
+.game-img {
+    height: 170px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* Ad card */
+.ad-card {
+    border: 2px dashed #ffc107;
+    background-color: #2c2c2c;
+}
+.ad-img {
+    width: 100%;
+    height: 170px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #2c2c3a;
+    padding: 10px;
+}
+
+/* Buttons */
+.btn-play {
+    background-color: #6f42c1;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+}
+.btn-play:hover {
+    background-color: #5a34a6;
+    color: #fff;
+}
+.btn-details {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+}
+.btn-details:hover {
+    background-color: #b02a37;
+    color: #fff;
+}
+</style>
+{% endblock %}

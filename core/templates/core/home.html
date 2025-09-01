@@ -1,0 +1,191 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+
+        <!-- Welcome Section -->
+        <h1 class="welcome-text text-center my-4">{% trans "Добро пожаловать!" %}</h1>
+        <p class="welcome-text text-center mb-5">{% trans "Добавьте свою игру или посмотрите каталог." %}</p>
+
+        <div class="text-center mb-4">
+            <h1 class="fw-bold text-info">🎮 SUFRADISK — {% trans "Play. Download. Earn." %}</h1>
+            <p class="text-light fs-5">
+                {% blocktrans %}SUFRA is a gaming platform where users can play HTML5 games, and developers can upload their projects, earn money and share them with the world.{% endblocktrans %}
+            </p>
+        </div>
+
+        <div class="row text-center my-5">
+            <div class="col-md-6">
+                <h3 class="text-warning">🕹 {% trans "For Players" %}</h3>
+                <p class="text-light">{% trans "Играйте онлайн и получайте награды за проведенное время в играх!" %}</p>
+            </div>
+            <div class="col-md-6">
+                <h3 class="text-success">🧑‍💻 {% trans "For Developers" %}</h3>
+                <p class="text-light">{% trans "Upload your games and earn money from your developer page." %}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🏆 Leaderboard -->
+    <div class="leaderboard-section my-5 p-4 rounded shadow-lg" style="background-color:#1e1e2f;">
+        <h2 class="text-center text-warning mb-4">🏆 {% trans "Top 10 players" %}</h2>
+        <ul class="list-group list-group-flush">
+            {% for p in top_players %}
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    style="background-color:#2c2c3a; color:white;">
+
+                    <div>
+                        {% if forloop.counter == 1 %}
+                            🥇 <span class="fw-bold text-warning">{{ p.username }}</span>
+                        {% elif forloop.counter == 2 %}
+                            🥈 <span class="fw-bold text-secondary">{{ p.username }}</span>
+                        {% elif forloop.counter == 3 %}
+                            🥉 <span class="fw-bold text-danger">{{ p.username }}</span>
+                        {% else %}
+                            <span class="text-info">#{{ forloop.counter }}</span> {{ p.username }}
+                        {% endif %}
+                    </div>
+
+                    <span class="badge bg-info text-dark fs-6">{{ p.profile.currency }} 💰</span>
+                </li>
+            {% empty %}
+                <li class="list-group-item text-center text-light" style="background-color:#2c2c3a;">
+                    {% trans "There are no players in the ranking yet 😢" %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Games + Ads Section -->
+    <div class="row mt-4">
+        {% for item in items %}
+            {% if item.type == "game" %}
+                {% with game=item.object %}
+                <div class="col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
+                    <div class="card shadow-lg h-100"
+                         style="width: 100%; max-width: 300px; background-color: #1e1e2f;
+                                border-radius: 15px; border: 2px solid {% if item.recommended %}#ffc107{% else %}#3e3e50{% endif %};">
+
+                        {% if game.image %}
+                            <img src="{{ game.image.url }}"
+                                 class="card-img-top rounded-top"
+                                 style="height: 160px; object-fit: cover;"
+                                 alt="{{ game.name }}">
+                        {% else %}
+                            <img src="{% static 'img/default_game.jpg' %}"
+                                 class="card-img-top rounded-top"
+                                 style="height: 160px; object-fit: cover;"
+                                 alt="{{ game.name }}">
+                        {% endif %}
+
+                        <div class="card-body d-flex flex-column p-3 text-center">
+                            <h5 class="card-title text-white mb-3" style="font-size: 1.1rem;">
+                                {{ game.name }}
+                                {% if item.recommended %}
+                                    <span class="badge bg-warning text-dark">{% trans "Recommended" %}</span>
+                                {% endif %}
+                            </h5>
+                            <div class="mt-auto">
+                                <a href="{% url 'play_game' game.id %}"
+                                   class="btn btn-info btn-sm w-100 mb-2">{% trans "Play" %}</a>
+                                <a href="{% url 'game_detail' game.id %}"
+                                   class="btn btn-sm w-100"
+                                   style="background-color: #6f42c1; color: white;">{% trans "Read more" %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endwith %}
+            {% elif item.type == "ad" %}
+                {% with ad=item.object %}
+                <!-- Ad in same card frame as games -->
+                <div class="col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
+                    <div class="card shadow-lg h-100 d-flex align-items-center justify-content-center"
+                         style="width: 100%; max-width: 300px; background-color: #2c2c3a;
+                                border-radius: 15px; border: 2px dashed #6f42c1;">
+                        <h6 class="text-white mb-2">🔥 {% trans "Advertising" %}</h6>
+                        {% if ad.media_type == "image" %}
+                            <a href="{{ ad.link }}" target="_blank">
+                                <img src="{{ ad.file.url }}" class="img-fluid rounded" alt="Ad">
+                            </a>
+                        {% elif ad.media_type == "video" %}
+                            <video controls class="img-fluid rounded">
+                                <source src="{{ ad.file.url }}">
+                            </video>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endwith %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+<div id="ad-container" style="display:none; position:fixed; bottom:20px; right:20px; background:#000; padding:10px; border-radius:8px; z-index:9999;">
+  <span id="ad-close" style="cursor:pointer; color:#fff; float:right;">✖</span>
+  <div id="ad-content"></div>
+</div>
+
+<script>
+  async function fetchAd() {
+    try {
+      const response = await fetch("/get-random-ad/");  // new endpoint you’ll make
+      const ad = await response.json();
+
+      let adHtml = "";
+      if (ad.type === "image") {
+        adHtml = `<a href="${ad.link}" target="_blank"><img src="${ad.file_url}" style="max-width:300px;"></a>`;
+      } else if (ad.type === "video") {
+        adHtml = `<video autoplay muted style="max-width:300px;">
+                    <source src="${ad.file_url}" type="video/mp4">
+                  </video>`;
+      }
+      document.getElementById("ad-content").innerHTML = adHtml;
+
+      const adContainer = document.getElementById("ad-container");
+      adContainer.style.display = "block";
+
+      setTimeout(() => {
+        adContainer.style.display = "none";
+      }, 10000); // hide after 10s
+
+    } catch (err) {
+      console.error("Ad fetch error", err);
+    }
+  }
+
+setTimeout(fetchAd, 5000);
+
+// Then every 3 minutes
+setInterval(fetchAd, 3 * 60 * 1000);
+
+  // Allow manual close
+  document.getElementById("ad-close").onclick = () => {
+    document.getElementById("ad-container").style.display = "none";
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% if daily_reward %}
+<script>
+Swal.fire({
+  title: "🎁 {% trans 'Ежедневная награда!' %}",
+  text: "{% blocktrans %}You received {{ daily_reward }} 💰 coins!{% endblocktrans %}",
+  icon: "success",
+  showConfirmButton: false,
+  timer: 3000,
+  backdrop: `
+    rgba(0,0,123,0.4)
+    url("https://media.giphy.com/media/5VKbvrjxpVJCM/giphy.gif")
+    left top
+    no-repeat
+  `
+});
+</script>
+{% endif %}
+
+{% endblock %}

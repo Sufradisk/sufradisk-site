@@ -1,0 +1,855 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-01 00:24+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\core\forms.py:29
+msgid "I confirm I own the rights to upload this game"
+msgstr "Men ushbu oʻyinni yuklash huquqiga ega ekanligimni tasdiqlayman"
+
+#: .\core\forms.py:33
+msgid "Spritted"
+msgstr "Spritted"
+
+#: .\core\forms.py:34
+msgid "GameFlare"
+msgstr "GameFlare"
+
+#: .\core\forms.py:35
+msgid "Personal"
+msgstr "Shaxsiy"
+
+#: .\core\forms.py:39
+msgid "Action"
+msgstr "Ekshen"
+
+#: .\core\forms.py:40
+msgid "Adventure"
+msgstr "Sarguzasht"
+
+#: .\core\forms.py:41
+msgid "Role-Playing Game (RPG)"
+msgstr "Rolni o‘ynash o‘yini (RPG)"
+
+#: .\core\forms.py:42
+msgid "Simulation"
+msgstr "Simulyatsiya"
+
+#: .\core\forms.py:43
+msgid "Strategy"
+msgstr "Strategiya"
+
+#: .\core\forms.py:44
+msgid "Sports"
+msgstr "Sport"
+
+#: .\core\forms.py:45
+msgid "Puzzle"
+msgstr "Boshqotirma"
+
+#: .\core\forms.py:46
+msgid "Idle / Incremental"
+msgstr "Idle / Kliker"
+
+#: .\core\forms.py:47
+msgid "Fighting"
+msgstr "Jangovar"
+
+#: .\core\forms.py:48
+msgid "Shooter"
+msgstr "Otishma (Shuter)"
+
+#: .\core\forms.py:49
+msgid "Racing"
+msgstr "Poyga"
+
+#: .\core\forms.py:50
+msgid "Survival"
+msgstr "Omon qolish"
+
+#: .\core\forms.py:51
+msgid "Sandbox / Open World"
+msgstr "Qumloq / Ochiq dunyo"
+
+#: .\core\forms.py:52
+msgid "Platformer"
+msgstr "Platformer"
+
+#: .\core\forms.py:53
+msgid "Music / Rhythm"
+msgstr "Musiqa / Ritm"
+
+#: .\core\forms.py:54
+msgid "Stealth"
+msgstr "Yashirincha (Stealth)"
+
+#: .\core\forms.py:55
+msgid "Horror"
+msgstr "Qo'rqinchli"
+
+#: .\core\forms.py:56
+msgid "Educational"
+msgstr "Tarbiyaviy"
+
+#: .\core\forms.py:57
+msgid "Party / Casual"
+msgstr "Oddiy / Ko‘ngilochar"
+
+#: .\core\forms.py:58
+msgid "MMO"
+msgstr "MMO (Ommaviy ko‘p o‘yinchi onlayn o‘yin)"
+
+#: .\core\forms.py:59
+msgid "Endless-runner"
+msgstr "Cheksiz yuguruvchi"
+
+#: .\core\forms.py:60
+msgid "Dress-up & styling"
+msgstr "Kiyinish va uslub"
+
+#: .\core\forms.py:61
+msgid "Arena Games"
+msgstr "Arena o‘yinlari"
+
+#: .\core\forms.py:64
+msgid "Source"
+msgstr "Manba"
+
+#: .\core\forms.py:65
+msgid "Genre"
+msgstr "Janr"
+
+#: .\core\forms.py:74
+msgid "Game Name"
+msgstr "O'yin nomi"
+
+#: .\core\forms.py:75
+msgid "Game Instructions / Description"
+msgstr "O'yin ko'rsatmalari / Tavsif"
+
+#: .\core\forms.py:76
+msgid "Game Thumbnail"
+msgstr "Oʻyin eskizi"
+
+#: .\core\forms.py:77
+msgid "Embed Code (iframe)"
+msgstr "Embed Code (iframe)"
+
+#: .\core\forms.py:78
+msgid "Tags (comma separated)"
+msgstr "Teglar (vergul bilan ajratilgan)"
+
+#: .\core\forms.py:83
+msgid "Briefly describe the game"
+msgstr "O'yinni qisqacha tasvirlab bering"
+
+#: .\core\forms.py:88
+msgid "<iframe src=\"...\"></iframe>"
+msgstr "<iframe src=\"...\"></iframe>"
+
+#: .\core\forms.py:92
+msgid "e.g. fun, multiplayer, 3D"
+msgstr "masalan qiziqarli, multiplayer, 3D"
+
+#: .\core\templates\core\about.html:4
+#, fuzzy
+#| msgid "About — Sufra"
+msgid "About — Sufradisk"
+msgstr "Sufra - Haqida"
+
+#: .\core\templates\core\about.html:8
+msgid "About Us"
+msgstr "Biz haqimizda"
+
+#: .\core\templates\core\about.html:10
+msgid ""
+"SUFRADISK is an online platform where creators can upload, share, and launch "
+"their games easily. Our mission is to connect developers and players in one "
+"fun and rewarding ecosystem."
+msgstr ""
+"SUFRADISK — ijodkorlar yuklashi, almashishi va ishga tushirishi mumkin boʻlgan "
+"onlayn platformadir,ularning o'yinlari oson. Bizning vazifamiz ishlab "
+"chiquvchilar va o'yinchilarni bir joyga jamlash qiziqarli va mukofotli "
+"ekosistema yaratishdir."
+
+#: .\core\templates\core\about.html:16 .\core\templates\core\home.html:26
+msgid "For Developers"
+msgstr "Dasturchilar uchun"
+
+#: .\core\templates\core\about.html:17
+msgid ""
+"Developers can upload their games and instantly reach players worldwide."
+msgstr ""
+"Dasturchilar o'z o'yinlarini yuklashlari va butun dunyo bo'ylab "
+"o'yinchilarga bir zumda murojaat qilishlari mumkin."
+
+#: .\core\templates\core\about.html:18
+msgid ""
+"You remain the full owner of your games — SUFRADISK is just your stage to "
+"shine."
+msgstr ""
+"Siz oʻz oʻyinlaringizning toʻliq egasi boʻlib qolasiz – SUFRADISK shunchaki "
+"porlash uchun sahnangizdir."
+
+#: .\core\templates\core\about.html:19
+msgid ""
+"Earn money: For every 100 hours of playtime your games receive, you earn $1. "
+"For example, 10,000 hours = $100."
+msgstr ""
+"Pul ishlang: O'yinlaringiz olgan har 100 soatlik o'yin uchun siz $1 ishlab "
+"olasiz.Masalan, 10 000 soat = 100$. "
+
+#: .\core\templates\core\about.html:22
+msgid "Developers"
+msgstr "Dasturchilar"
+
+#: .\core\templates\core\about.html:29 .\core\templates\core\home.html:22
+msgid "For Players"
+msgstr "O'yinchilar uchun"
+
+#: .\core\templates\core\about.html:30
+msgid ""
+"Players can discover new indie games, enjoy exciting adventures, and support "
+"their favorite creators."
+msgstr ""
+"O'yinchilar yangi indie o'yinlarini kashf qilishlari, qiziqarli "
+"sarguzashtlardan bahramand bo'lishlari va qo'llab-quvvatlashlari "
+"mumkinularning sevimli ixtirolarini"
+
+#: .\core\templates\core\about.html:31
+msgid ""
+"You can customize your profile with backgrounds and collect rewards just by "
+"playing."
+msgstr ""
+"Siz o'zingizning profilingizni fon bilan sozlashingiz va shunchaki mukofot "
+"to'plashingiz mumkino'ynab"
+
+#: .\core\templates\core\about.html:34
+msgid "Players"
+msgstr "O'yinchilar"
+
+#: .\core\templates\core\about.html:41
+msgid "Rewards & Community"
+msgstr "Mukofotlar & Hamjamiyat"
+
+#: .\core\templates\core\about.html:42
+msgid "Players earn rewards while playing, which they can use inside SUFRA."
+msgstr ""
+"O'yinchilar o'ynab, SUFRA ichida foydalanishlari mumkin bo'lgan mukofotlarga "
+"ega bo'lishadi."
+
+#: .\core\templates\core\about.html:43
+msgid "Backgrounds, items, and achievements make your journey even more fun."
+msgstr "Orqa fon, narsalar va yutuqlar sayohatingizni yanada qiziqarli qiladi."
+
+#: .\core\templates\core\about.html:46
+msgid "Rewards"
+msgstr "Mukofotlar"
+
+#: .\core\templates\core\about.html:53
+msgid "How It Works"
+msgstr "U qanday ishlaydi"
+
+#: .\core\templates\core\about.html:54
+msgid "1. Developers upload their games."
+msgstr "1. Dasturchilar o'z o'yinlarini yuklaydilar."
+
+#: .\core\templates\core\about.html:55
+msgid "2. Players discover and play games online."
+msgstr "O'yinlarni onlayn yuklash va o'ynash uchun platforma"
+
+#: .\core\templates\core\about.html:56
+msgid "3. Developers earn money based on total playtime hours."
+msgstr "3. Dasturchilar umumiy o‘yin vaqtiga qarab pul ishlab topadilar"
+
+#: .\core\templates\core\about.html:57
+msgid "4. Players collect rewards and enjoy the community."
+msgstr "4. O'yinchilar mukofot yig'adilar va jamiyatdan zavqlanadilar."
+
+#: .\core\templates\core\about.html:63
+msgid "Behind the Project"
+msgstr "Loyihaning orqasida"
+
+#: .\core\templates\core\about.html:65
+msgid ""
+"I built SUFRADISK with dedication, plus some help from AI tools to speed up "
+"development and make things possible."
+msgstr "Men SUFRADISKni fidoyilik bilan qurdim va loyihani tezroq amalga oshirish uchun AI vositalaridan foydalandim. "
+
+
+#: .\core\templates\core\add_game.html:27
+msgid "Сохранить"
+msgstr "Saqlash"
+
+#: .\core\templates\core\add_game.html:31
+msgid "You do not have permission to add games."
+msgstr "Sizda oʻyin qoʻshish uchun ruxsat yoʻq."
+
+#: .\core\templates\core\base.html:10
+msgid "A platform for uploading and playing games online"
+msgstr "O'yinlarni onlayn yuklash va o'ynash uchun platforma"
+
+#: .\core\templates\core\base.html:11
+msgid "games, catalog, play online, upload game, Sufra"
+msgstr "o'yinlar, katalog, onlayn o'ynash, o'yinni yuklash, Sufra"
+
+#: .\core\templates\core\base.html:16
+msgid "Game Platform"
+msgstr "O'yin platformasi"
+
+#: .\core\templates\core\base.html:17
+msgid "Game catalog, play online or download."
+msgstr "O'yinlar katalogi, onlayn o'ynang yoki yuklab oling."
+
+#: .\core\templates\core\base.html:29
+msgid "Sufra gaming platform – add and play your favorite games."
+msgstr "Sufra oʻyin platformasi – sevimli oʻyinlaringizni qoʻshing va oʻynang."
+
+#: .\core\templates\core\base.html:68
+msgid "Home"
+msgstr "Asosiy"
+
+#: .\core\templates\core\base.html:69
+msgid "Catalog"
+msgstr "Katalog"
+
+#: .\core\templates\core\base.html:70
+msgid "Shop"
+msgstr "Shopxona"
+
+#: .\core\templates\core\base.html:72
+msgid "Inventory"
+msgstr "Inventar"
+
+#: .\core\templates\core\base.html:74
+msgid "About"
+msgstr "Biz haqimizda"
+
+#: .\core\templates\core\base.html:135
+#, fuzzy
+#| msgid "Назад в профиль"
+msgid "Профиль"
+msgstr "Profilga qaytish"
+
+#: .\core\templates\core\base.html:139
+msgid "Выйти"
+msgstr "Chiqish"
+
+#: .\core\templates\core\base.html:145 .\core\templates\core\base.html:324
+#: .\core\templates\registration\login.html:10
+msgid "Войти"
+msgstr "Kirish"
+
+#: .\core\templates\core\base.html:149 .\core\templates\core\base.html:332
+#: .\core\templates\registration\register.html:21
+msgid "Зарегистрироваться"
+msgstr "Roʻyxatdan oʻtish"
+
+#: .\core\templates\core\base.html:204
+msgid "Add Game"
+msgstr "O'yin qo'shish"
+
+#: .\core\templates\core\base.html:206
+msgid "Theme"
+msgstr "Tema"
+
+#: .\core\templates\core\base.html:303 .\core\templates\core\home.html:10
+msgid "Добро пожаловать!"
+msgstr "Xush kelibsiz!"
+
+#: .\core\templates\core\base.html:304
+msgid "Закрыть"
+msgstr "Yopish"
+
+#: .\core\templates\core\base.html:311
+#: .\core\templates\registration\login.html:6
+msgid "Вход"
+msgstr "Kirish"
+
+#: .\core\templates\core\base.html:314
+#: .\core\templates\registration\register.html:6
+msgid "Регистрация"
+msgstr "Roʻyxatdan oʻtish"
+
+#: .\core\templates\core\catalog.html:5
+msgid "Catalog — Sufradisk"
+msgstr "Sufradisk-katalogi"
+
+#: .\core\templates\core\catalog.html:9
+msgid "Game Catalog"
+msgstr "O'yin katalogi"
+
+#: .\core\templates\core\catalog.html:18
+msgid "All"
+msgstr "Barchasi"
+
+#: .\core\templates\core\catalog.html:21
+msgid "Most Popular"
+msgstr "Eng mashhurlar"
+
+#: .\core\templates\core\catalog.html:24
+msgid "Newest"
+msgstr "Eng yengillar"
+
+#: .\core\templates\core\catalog.html:27 .\core\templates\core\home.html:88
+msgid "Recommended"
+msgstr "Tavsiya etilganlar"
+
+#: .\core\templates\core\catalog.html:34
+msgid "All Genres"
+msgstr "Barcha Janrlar"
+
+#: .\core\templates\core\catalog.html:43
+msgid "Search games..."
+msgstr "Oʻyinlarni qidirish..."
+
+#: .\core\templates\core\catalog.html:64 .\core\templates\core\home.html:93
+msgid "Play"
+msgstr "O'ynang"
+
+#: .\core\templates\core\catalog.html:67
+msgid "Details"
+msgstr "Tafsilotlar"
+
+#: .\core\templates\core\catalog.html:79
+msgid "Sponsored"
+msgstr "Homiy"
+
+#: .\core\templates\core\catalog.html:82
+msgid "Advertisement"
+msgstr "Reklama"
+
+#: .\core\templates\core\catalog.html:87
+msgid "Your browser does not support the video tag."
+msgstr "Brauzeringiz video tegini qo'llab-quvvatlamaydi."
+
+#: .\core\templates\core\faq.html:4
+msgid "FAQ — Sufradisk"
+msgstr "Tez-tez so'raladigan savollar — Sufradisk"
+
+#: .\core\templates\core\faq.html:8
+msgid "Frequently Asked Questions"
+msgstr "Tez-tez so'raladigan savollar"
+
+#: .\core\templates\core\faq.html:9
+msgid ""
+"Find answers to common questions about SUFRA, whether you are a developer or "
+"a player."
+msgstr ""
+"SUFRADISK haqidagi keng tarqalgan savollarga javob toping, siz dasturchi "
+"bo'lasizmi yoki o'yinchi."
+
+#: .\core\templates\core\faq.html:16
+msgid "What is SUFRADISK?"
+msgstr "SUFRADISK nima?"
+
+#: .\core\templates\core\faq.html:21
+msgid ""
+"SUFRA is an online platform where developers upload games and players "
+"enjoy them instantly in their browser."
+msgstr ""
+"SUFRADISK - bu onlayn platforma bo'lib, unda ishlab chiquvchilar o'yinlarni "
+"yuklaydi va o'yinchilar zavqlanadilarUlar darhol o'z brauzerlarida."
+
+#: .\core\templates\core\faq.html:30
+msgid "Is SUFRADISK free?"
+msgstr "SUFRADISK bepulmi?"
+
+#: .\core\templates\core\faq.html:35
+msgid "Yes! Playing games is free. Developers can also upload games for free."
+msgstr ""
+"Ha! O'yin o'ynash bepul. Ishlab chiquvchilar o'yinlarni bepul yuklashlari "
+"mumkin."
+
+#: .\core\templates\core\faq.html:44
+msgid "How do developers earn money?"
+msgstr "Ishlab chiquvchilar qanday qilib pul topishadi?"
+
+#: .\core\templates\core\faq.html:49
+msgid ""
+"Developers earn $1 for every 100 hours of total playtime across their games. "
+"For example, 10,000 hours = $100."
+msgstr ""
+"Ishlab chiquvchilar oʻzlarining oʻyinlari boʻyicha har 100 soatlik umumiy "
+"oʻyin vaqti uchun $1 ishlab topadilar.Masalan, 10 000 soat = 100 $."
+
+#: .\core\templates\core\faq.html:58
+msgid "Do developers keep ownership of their games?"
+msgstr ""
+"Ishlab chiquvchilar o'z o'yinlariga egalik huquqini saqlab qolishadimi?"
+
+#: .\core\templates\core\faq.html:63
+msgid ""
+"Yes. Developers keep full rights to their games. SUFRADISK is only a "
+"platform to showcase them."
+msgstr ""
+"Ha. Dasturchilar o'z o'yinlariga to'liq huquqlarni saqlab qolishadi. SUFRA "
+"faqatgina platformadir.Ularni ko'rsating."
+
+#: .\core\templates\core\faq.html:72
+msgid "What kind of rewards can players get?"
+msgstr "O'yinchilar qanday mukofotlarga ega bo'lishlari mumkin?"
+
+#: .\core\templates\core\faq.html:77
+msgid ""
+"Players can collect backgrounds, inventory items, and achievements that "
+"personalize their experience."
+msgstr ""
+"O'yinchilar fon, inventar buyumlari va yutuqlarni to'plashlari mumkin o'z "
+"tajribasini shaxsiylashtirish."
+
+#: .\core\templates\core\faq.html:86
+msgid "How do I upload my game?"
+msgstr "O'yinimni qanday yuklashim mumkin?"
+
+#: .\core\templates\core\faq.html:91
+msgid ""
+"Simply sign up, go to your dashboard, and use the 'Upload Game' feature."
+msgstr ""
+"Shunchaki ro‘yxatdan o‘ting, boshqaruv paneliga o‘ting va “O‘yinni yuklash” "
+"funksiyasidan foydalaning."
+"Shu narsani esda tutish kerakki o'yinlar faqat embed(iframe) ko'rinisida bo'lish kerak"
+
+#: .\core\templates\core\game_detail.html:118
+msgid "Отзывы игроков:"
+msgstr "O'yinchilarning sharhi:"
+
+#: .\core\templates\core\game_detail.html:136
+msgid "Пока нет отзывов. Будь первым!"
+msgstr "Hozircha sharhlar yoʻq. Birinchi bo'ling!"
+
+#: .\core\templates\core\game_detail.html:142
+msgid "Оставить отзыв:"
+msgstr "Sharh qoldiring:"
+
+#: .\core\templates\core\game_detail.html:166
+msgid "Ваша оценка:"
+msgstr "Sizning bahoingiz:"
+
+#: .\core\templates\core\game_detail.html:182
+#: .\core\templates\registration\send_code.html:12
+msgid "Отправить"
+msgstr "Yuborish"
+
+#: .\core\templates\core\home.html:11
+msgid "Добавьте свою игру или посмотрите каталог."
+msgstr "O'yiningizni qo'shing yoki katalogni ko'rib chiqing."
+
+#: .\core\templates\core\home.html:14
+msgid "Play. Download. Earn."
+msgstr "O'ynang. Yuklab olish. Pul ishlang."
+
+#: .\core\templates\core\home.html:16
+msgid ""
+"SUFRA is a gaming platform where users can play HTML5 games, and developers "
+"can upload their projects, earn money and share them with the world."
+msgstr ""
+"SUFRADISK - bu foydalanuvchilar HTML5 o'yinlarini o'ynashi mumkin bo'lgan o'yin "
+"platformasi va dasturchilar o'z loyihalarini yuklashlari, pul ishlashlari va "
+"ularni dunyo bilan baham ko'rishlari mumkin."
+
+#: .\core\templates\core\home.html:23
+msgid "Играйте онлайн и получайте награды за проведенное время в играх!"
+msgstr "Onlayn o'ynang va o'yinlarda sarflagan vaqtingiz uchun mukofot oling!"
+
+#: .\core\templates\core\home.html:27
+msgid "Upload your games and earn money from your developer page."
+msgstr "O'yinlaringizni yuklang va dasturchi sahifangizdan pul ishlang."
+
+#: .\core\templates\core\home.html:34
+msgid "Top 10 players"
+msgstr "Top 10 boy o'yinchi"
+
+#: .\core\templates\core\home.html:56
+msgid "There are no players in the ranking yet 😢"
+msgstr "Reytingda hali o'yinchi yo'q😢"
+
+#: .\core\templates\core\home.html:96
+msgid "Read more"
+msgstr "Batafsil"
+
+#: .\core\templates\core\home.html:109
+msgid "Advertising"
+msgstr "Reklama"
+
+#: .\core\templates\core\home.html:176
+msgid "Ежедневная награда!"
+msgstr "Kundalik mukofot!"
+
+#: .\core\templates\core\home.html:177
+msgid "You received %(daily_reward)s 💰 coins!"
+msgstr "Siz %(daily_reward)s💰 tanga oldingiz!"
+
+#: .\core\templates\core\language_select.html:6
+msgid "Select Language"
+msgstr "Tilni tanlang"
+
+#: .\core\templates\core\language_select.html:9
+msgid "Choose a language"
+msgstr "Til tanlang"
+
+#: .\core\templates\core\language_select.html:13
+msgid "English"
+msgstr "Ingliz tili"
+
+#: .\core\templates\core\language_select.html:14
+msgid "Russian"
+msgstr "Rus tili"
+
+#: .\core\templates\core\language_select.html:15
+msgid "Uzbek"
+msgstr "O'zbekcha"
+
+#: .\core\templates\core\language_select.html:17
+msgid "Apply"
+msgstr "Ishatish"
+
+#: .\core\templates\core\play_game.html:17
+msgid "Ваш браузер не поддерживает видео."
+msgstr "Brauzeringiz videoni qo'llab-quvvatlamaydi."
+
+#: .\core\templates\core\play_game.html:27
+msgid "Нажмите на кнопку ниже, чтобы скачать игру:"
+msgstr "O'yinni yuklab olish uchun quyidagi tugmani bosing:"
+
+#: .\core\templates\core\play_game.html:29
+msgid "Скачать"
+msgstr "Yuklab olish"
+
+#: .\core\templates\core\play_game.html:39
+msgid "Формат файла не поддерживается."
+msgstr "Fayl formati qo'llab-quvvatlanmaydi."
+
+#: .\core\templates\core\play_game.html:56
+msgid "Back to catalog"
+msgstr "Katalog ga qaytish"
+
+#: .\core\templates\my_games.html:4
+msgid "Welcome to Sufra!"
+msgstr "Sufradsisk ga xush kelibsiz!"
+
+#: .\core\templates\my_games.html:6
+msgid "Мои игры"
+msgstr "Mening o'yinlarim"
+
+#: .\core\templates\my_games.html:15
+msgid "Жанр:"
+msgstr "Janr"
+
+#: .\core\templates\my_games.html:16
+msgid "Источник:"
+msgstr "Manba"
+
+#: .\core\templates\my_games.html:17
+msgid "Метки:"
+msgstr "Метки"
+
+#: .\core\templates\my_games.html:20
+msgid "Подробнее"
+msgstr "Batafsil"
+
+#: .\core\templates\my_games.html:27
+msgid "У вас пока нет загруженных игр."
+msgstr "Sizda hali yuklab olingan oʻyin yoʻq."
+
+#: .\core\templates\registration\my_profile.html:170
+msgid "Avatar"
+msgstr "Avatar"
+
+#: .\core\templates\registration\my_profile.html:172
+msgid "Default avatar"
+msgstr "Birlamchi avatar"
+
+#: .\core\templates\registration\my_profile.html:176
+msgid "Edit profile"
+msgstr "Profilni tahrirlash"
+
+#: .\core\templates\registration\my_profile.html:177
+msgid "Upload avatar"
+msgstr "Avatar yuklash"
+
+#: .\core\templates\registration\my_profile.html:178
+msgid "Delete account"
+msgstr "Hisobni o'chirish"
+
+#: .\core\templates\registration\my_profile.html:185
+msgid "Level"
+msgstr "Bosqich"
+
+#: .\core\templates\registration\my_profile.html:188
+msgid "Date of registration"
+msgstr "Ro'yxatdan o'tgan sana"
+
+#: .\core\templates\registration\my_profile.html:190
+msgid "Country"
+msgstr "Davlat"
+
+#: .\core\templates\registration\my_profile.html:191
+msgid "Last login"
+msgstr "Oxirgi login"
+
+#: .\core\templates\registration\my_profile.html:193
+msgid "Balance"
+msgstr "Balans"
+
+#: .\core\templates\registration\my_profile.html:197
+msgid "Manage advertising"
+msgstr "Reklamani boshqarish"
+
+#: .\core\templates\registration\my_profile.html:200
+msgid "My games"
+msgstr "Mening o'yinlarim"
+
+#: .\core\templates\registration\my_profile.html:206
+msgid "Go to panel"
+msgstr "Panelga o'ting"
+
+#: .\core\templates\registration\my_profile.html:210
+msgid "Your Referral Link:"
+msgstr "Sizning referal havolangiz:"
+
+#: .\core\templates\registration\my_profile.html:216
+msgid "✅ Click to copy & share!"
+msgstr "✅ Nusxalash va ulashish uchun bosing!"
+
+#: .\core\templates\registration\my_profile.html:222
+msgid "Favorite games"
+msgstr "Sevimli o'yinlar"
+
+#: .\core\templates\registration\my_profile.html:242
+msgid "There are no featured games."
+msgstr "Tanlangan oʻyinlar yoʻq."
+
+#: .\core\templates\registration\my_profile.html:248
+msgid "My reviews"
+msgstr "Mening sharhlarim"
+
+#: .\core\templates\registration\my_profile.html:256
+msgid "You haven't left any reviews yet."
+msgstr "Siz hali hech qanday sharh qoldirmadingiz."
+
+#: .\core\templates\registration\register.html:9
+msgid "Choose your role"
+msgstr "Rolingizni tanlang"
+
+#: .\core\templates\registration\register.html:11
+msgid "Select role..."
+msgstr "Rol tanlang..."
+
+#: .\core\templates\registration\register.html:12
+msgid "Player"
+msgstr "O'yinchi"
+
+#: .\core\templates\registration\register.html:13
+msgid "Developer"
+msgstr "Dasturchi"
+
+#: .\core\templates\registration\send_code.html:6
+msgid "Отправить код подтверждения"
+msgstr "Tasdiqlash kodini yuboring"
+
+#: .\core\templates\registration\send_code.html:9
+msgid "Email"
+msgstr "Email"
+
+#: .\core\templates\registration\verify_code.html:5
+msgid "Введите код из письма"
+msgstr "Xatdan kodni kiriting"
+
+#: .\core\templates\registration\verify_code.html:9
+msgid "Подтвердить"
+msgstr "Tasdiqlang"
+
+#: .\core\templates\shop.html:5
+msgid "Media Shop"
+msgstr "Media Shop"
+
+#: .\core\templates\shop.html:21
+#, fuzzy, python-format
+#| msgid "currency"
+msgid "%(price)s currency"
+msgstr "valyuta"
+
+#: .\core\templates\shop.html:33 .\core\templates\shop.html:41
+msgid "Active"
+msgstr "Faol"
+
+#: .\core\templates\shop.html:35
+msgid "Claim Free"
+msgstr "Tekinga oling"
+
+#: .\core\templates\shop.html:43
+msgid "Activate"
+msgstr "Faollashtirish"
+
+#: .\core\templates\shop.html:48
+msgid "Buy"
+msgstr "Sotib olish"
+
+#: .\core\templates\shop.html:52
+msgid "Not enough"
+msgstr "Yetarli emas"
+
+#: .\core\templates\shop.html:60
+msgid "Wallet / Inventory"
+msgstr "Hamyon / inventar"
+
+#: .\core\templates\upload_avatar.html:7
+msgid "Загрузить аватар"
+msgstr "Avatar yuklash"
+
+#: .\core\templates\upload_avatar.html:12
+msgid "Загрузить"
+msgstr "Yuklash"
+
+#: .\core\templates\upload_avatar.html:16
+msgid "Назад в профиль"
+msgstr "Profilga qaytish"
+
+#: .\core\views.py:568
+msgid "Код подтверждения для Sufra"
+msgstr "Sufra uchun tasdiqlash kodi"
+
+#: .\core\views.py:569
+msgid "Ваш код подтверждения: "
+msgstr "Tasdiqlash kodingiz:"
+
+#: .\core\views.py:575
+msgid "Код отправлен на ваш e-mail."
+msgstr "Kod sizning elektron pochtangizga yuborildi."
+
+#: .\core\views.py:600
+msgid "Пароли не совпадают"
+msgstr "Parollar mos kelmaydi"
+
+#: .\core\views.py:607
+msgid "Пароль успешно обновлён"
+msgstr "Parol muvaffaqiyatli yangilandi"
+
+#~ msgid ""
+#~ "SUFRA is a platform for uploading and launching games online, made with "
+#~ "heart ❤️"
+#~ msgstr ""
+#~ "SUFRA - bu yurak ❤️️ bilan yaratilgan o'yinlarni onlayn yuklash va ishga "
+#~ "tushirish uchun platforma."
+
+#~ msgid "FAQ"
+#~ msgstr "TSS"
+
+#~ msgid "Here you will find answers to the most frequently asked questions."
+#~ msgstr "Bu erda siz eng ko'p beriladigan savollarga javob topasiz."

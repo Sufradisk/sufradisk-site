@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h1>Advertisement Management</h1>
+
+<h3>Add New Advertisement</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Add Advertisement</button>
+</form>
+
+
+<hr>
+
+<h3>Existing Advertisements</h3>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Location</th>
+            <th>Type</th>
+            <th>Preview</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ad in ads %}
+        <tr>
+            <td>{{ ad.id }}</td>
+            <td>{{ ad.location }}</td>
+            <td>{{ ad.media_type }}</td>
+            <td>
+                {% if ad.file and ad.file.name %}
+                    {% if ad.media_type == "image" %}
+                        <img src="{{ ad.file.url }}" alt="ad" width="120">
+                    {% elif ad.media_type == "video" %}
+                        <video width="160" controls>
+                            <source src="{{ ad.file.url }}" type="video/mp4">
+                        </video>
+                    {% endif %}
+                {% else %}
+                    <span style="color: gray;">No file uploaded</span>
+                {% endif %}
+            </td>
+            <td>{{ ad.active|yesno:"✅,❌" }}</td>
+            <td>
+                <a href="{% url 'advertisement_edit' ad.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'advertisement_delete' ad.id %}"
+                   class="btn btn-danger"
+                   onclick="return confirm('Delete this ad?');">
+                   Delete
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6">No ads yet.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

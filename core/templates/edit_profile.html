@@ -1,0 +1,135 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .profile-edit-box {
+    max-width: 500px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .profile-edit-box h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 25px;
+    font-weight: bold;
+  }
+
+  .form-group {
+    margin-bottom: 20px; /* space between inputs */
+  }
+
+  .form-control {
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 15px;
+  }
+
+  /* Stylish radio button for role selection */
+  .role-options {
+    display: flex;
+    justify-content: space-between;
+  }
+  .role-option {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .role-option:hover {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+  }
+  .role-option input {
+    display: none;
+  }
+  .role-option.selected {
+    border-color: #007bff;
+    background-color: #e6f2ff;
+    font-weight: bold;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+</style>
+
+<div class="profile-edit-box">
+  <h2>Редактировать профиль</h2>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% if form.errors %}
+      <div class="alert alert-danger">
+        <ul>
+          {% for field in form %}
+            {% for error in field.errors %}
+              <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+          {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <div class="form-group">
+      {{ form.first_name.label_tag }}
+      {{ form.first_name }}
+    </div>
+
+    <div class="form-group">
+      {{ form.email.label_tag }}
+      {{ form.email }}
+    </div>
+
+    <div class="form-group">
+      {{ form.country.label_tag }}
+      {{ form.country }}
+    </div>
+
+   {% if request.user.is_superuser %}
+<div class="form-group">
+  <label>Role</label>
+  <div class="role-options">
+    <label class="role-option {% if form.role.value == 'player' %}selected{% endif %}">
+      <input type="radio" name="role" value="player" {% if form.role.value == 'player' %}checked{% endif %}>
+      Player 🎮
+    </label>
+    <label class="role-option {% if form.role.value == 'developer' %}selected{% endif %}">
+      <input type="radio" name="role" value="developer" {% if form.role.value == 'developer' %}checked{% endif %}>
+      Developer 💻
+    </label>
+  </div>
+</div>
+{% else %}
+<input type="hidden" name="role" value="{{ form.instance.role }}">
+{% endif %}
+
+    <button type="submit" class="btn btn-primary">💾 Сохранить</button>
+  </form>
+</div>
+
+<script>
+  // Make the radio selection style update instantly
+  document.querySelectorAll('.role-option input').forEach(input => {
+    input.addEventListener('change', function() {
+      document.querySelectorAll('.role-option').forEach(option => option.classList.remove('selected'));
+      this.closest('.role-option').classList.add('selected');
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,6 @@
+<form method="post">
+  {% csrf_token %}
+  <label>Введите код из письма:</label>
+  <input type="text" name="code" required>
+  <button type="submit">Проверить</button>
+</form>

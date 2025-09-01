@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-lg p-4">
+    <h3 class="mb-3">🚀 Promote {{ game.name }}</h3>
+    <p>Select how long you want your game to appear in the <strong>Top 10 Recommended</strong> list.</p>
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="duration" class="form-label">Promotion Duration</label>
+        <select name="duration" id="duration" class="form-select">
+          <option value="24">24 hours</option>
+          <option value="72">3 days</option>
+          <option value="168">7 days</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success">Confirm Promotion</button>
+      <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "Select Language" %}</title>
+</head>
+<body>
+    <h1>{% trans "Choose a language" %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <select name="lang">
+            <option value="en">{% trans "English" %}</option>
+            <option value="ru">{% trans "Russian" %}</option>
+            <option value="uz">{% trans "Uzbek" %}</option>
+        </select>
+        <button type="submit">{% trans "Apply" %}</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h2>Your Inventory</h2>
+
+{% if inventory_items %}
+  <ul class="inventory-list">
+    {% for item in inventory_items %}
+      <li>
+        <strong>{{ item.offer.title }}</strong>
+        {% if item.offer.image %}
+          <img src="{{ item.offer.image.url }}" alt="{{ item.offer.title }}" width="100">
+        {% endif %}
+        <p>Acquired: {{ item.acquired_at|date:"Y-m-d H:i" }}</p>
+        {% if item.used %}
+          <span class="used">✅ Already used</span>
+        {% else %}
+          <a href="{% url 'use_item' item.id %}" class="btn">Use</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No rewards yet. Buy something in the <a href="{% url 'shop' %}">shop</a>!</p>
+{% endif %}
+{% endblock %}

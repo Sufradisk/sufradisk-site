@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>{% trans "Загрузить аватар" %}</h2>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">{% trans "Загрузить" %}</button>
+  </form>
+
+  <br>
+  <a href="{% url 'my_profile' %}" class="btn btn-secondary">{% trans "Назад в профиль" %}</a>
+</div>
+{% endblock %}

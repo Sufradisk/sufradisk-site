@@ -1,0 +1,118 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container text-center text-white py-5">
+  <h1>{{ game.name }}</h1>
+
+  <div style="position: relative; width: 100%; height: 100vh; margin: 0; padding: 0;">
+    {% if game.embed_code %}
+      <div id="game-frame" class="game-frame mt-4" style="width:100%; height:100%;">
+        {{ game.embed_code|safe }}
+      </div>
+
+    {% elif file_ext == ".mp4" %}
+      <video id="game-frame" controls autoplay style="max-width: 100%; height: 100%; border-radius: 12px;">
+        <source src="{{ game.game_file.url }}" type="video/mp4">
+        {% trans "Ваш браузер не поддерживает видео." %}
+      </video>
+
+    {% elif file_ext == ".html" %}
+      <iframe id="game-frame"
+          src="{{ game.game_file.url }}"
+          style="width: 100%; height: 100%; border-radius: 12px; border: none;">
+      </iframe>
+
+    {% elif file_ext == ".exe" %}
+      <p class="mt-4">{% trans "Нажмите на кнопку ниже, чтобы скачать игру:" %}</p>
+      <a href="{{ game.game_file.url }}" class="btn btn-primary" download>
+        {% trans "Скачать" %} {{ game.name }}
+      </a>
+
+    {% elif file_ext == ".txt" %}
+      <iframe id="game-frame"
+          src="{{ game.game_file.url }}"
+          style="width: 100%; height: 100%; border: none;">
+      </iframe>
+
+    {% else %}
+      <p class="mt-4">{% trans "Формат файла не поддерживается." %}</p>
+    {% endif %}
+
+    <button id="fullscreen-btn" style="
+        position: absolute;
+        top: 10px; right: 10px;
+        z-index: 1000;
+        background: rgba(0,0,0,0.6);
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;">
+        ⛶ Fullscreen
+    </button>
+  </div>
+
+  <a href="{% url 'catalog' %}" class="btn btn-secondary mt-4">{% trans "Back to catalog" %}</a>
+</div>
+
+<style>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+</style>
+
+<script>
+document.getElementById("fullscreen-btn").addEventListener("click", function() {
+    let gameFrame = document.getElementById("game-frame");
+    if (gameFrame.requestFullscreen) {
+        gameFrame.requestFullscreen();
+    } else if (gameFrame.mozRequestFullScreen) {
+        gameFrame.mozRequestFullScreen();
+    } else if (gameFrame.webkitRequestFullscreen) {
+        gameFrame.webkitRequestFullscreen();
+    } else if (gameFrame.msRequestFullscreen) {
+        gameFrame.msRequestFullscreen();
+    }
+});
+</script>
+
+{% if session_id %}
+<script>
+(function() {
+  const sessionId = "{{ session_id }}";
+  const endUrl = "{% url 'end_session' game.id %}";
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  let sent = false;
+  async function endSessionOnce() {
+    if (sent) return;
+    sent = true;
+    try {
+      await fetch(endUrl, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': getCookie('csrftoken'),
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({ session_id: sessionId })
+      });
+    } catch (e) {
+      // ignore network errors on unload
+    }
+  }
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') endSessionOnce();
+  });
+  window.addEventListener('beforeunload', endSessionOnce);
+})();
+</script>
+{% endif %}
+{% endblock %}

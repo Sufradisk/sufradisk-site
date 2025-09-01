@@ -1,0 +1,14 @@
+<!-- delete_account.html -->
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="container text-center mt-5">
+    <h2>Удаление аккаунта</h2>
+    <p>Ты уверен, что хочешь удалить свой аккаунт? Это действие необратимо.</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Да, удалить аккаунт</button>
+    </form>
+  </div>
+{% endblock %}

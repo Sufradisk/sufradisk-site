@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+{% block content %}
+
+<h2>{% trans "Введите код из письма" %}</h2>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="code" placeholder="Введите код">
+    <button type="submit">{% trans "Подтвердить" %}</button>
+</form>
+
+{% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% endblock %}

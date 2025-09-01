@@ -1,0 +1,343 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SUFRADISK 🎮{% endblock %}</title>
+
+    <!-- ✅ SEO -->
+    <meta name="description" content="{% trans 'A platform for uploading and playing games online' %}">
+    <meta name="keywords" content="{% trans 'games, catalog, play online, upload game, Sufra' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="http://127.0.0.1:8000/">
+
+    <!-- ✅ Open Graph для социальных сетей -->
+    <meta property="og:title" content="Sufra - {% trans 'Game Platform' %}">
+    <meta property="og:description" content="{% trans 'Game catalog, play online or download.' %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://127.0.0.1:8000/">
+    <meta property="og:image" content="{% static 'images/logo.png' %}">
+
+    <!-- ✅ Schema.org structured data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SUFRADISK",
+      "url": "http://127.0.0.1:8000",
+      "description": "{{ _('Sufra gaming platform – add and play your favorite games.')|escapejs }}",
+      "logo": "{% static 'images/logo.png' %}",
+      "sameAs": []
+    }
+    </script>
+
+    <!-- ✅ Стили -->
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- ✅ Тема сайта -->
+    <script>
+      if (!localStorage.getItem('theme')) localStorage.setItem('theme', 'dark');
+      document.documentElement.classList.add(localStorage.getItem('theme') + '-theme');
+    </script>
+</head>
+
+<body class="
+    {% if user.is_authenticated and user.is_superuser %}
+        bg-space
+    {% elif user.is_authenticated and user.profile.active_background %}
+        {{ user.profile.active_background }}
+    {% else %}
+        {{ local_theme|default:'dark-theme' }}
+    {% endif %}
+">
+
+<header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center gap-2 text-info fw-bold" href="{% url 'home' %}">
+      🎮 SUFRADISK
+    </a>
+
+    <div class="mx-auto">
+      <div class="navbar-nav d-flex flex-row gap-4 justify-content-center align-items-center">
+        <a class="nav-link nav-item-custom" href="{% url 'home' %}"><i class="bi bi-house-door"></i> {% trans "Home" %}</a>
+        <a class="nav-link nav-item-custom" href="{% url 'catalog' %}"><i class="bi bi-grid"></i> {% trans "Catalog" %}</a>
+        <a class="nav-link nav-item-custom" href="{% url 'shop' %}"><i class="bi bi-bag"></i> {% trans "Shop" %}</a>
+          <a class="nav-link nav-item-custom" href="{% url 'inventory' %}">
+  <i class="bi bi-backpack"></i> {% trans "Inventory" %}
+</a>
+        <a class="nav-link nav-item-custom" href="{% url 'about' %}"><i class="bi bi-info-circle"></i> {% trans "About" %}</a>
+        <a class="nav-link nav-item-custom" href="{% url 'faq' %}"><i class="bi bi-question-circle"></i> FAQ</a>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <form action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <select name="language" class="language-select" onchange="this.form.submit()">
+          <option value="en" {% if request.LANGUAGE_CODE == 'en' %}selected{% endif %}>🇬🇧English</option>
+          <option value="ru" {% if request.LANGUAGE_CODE == 'ru' %}selected{% endif %}>🇷🇺Русский</option>
+          <option value="uz" {% if request.LANGUAGE_CODE == 'uz' %}selected{% endif %}>🇺🇿O'zbek</option>
+        </select>
+      </form>
+    </div>
+  </div>
+
+    {% if messages %}
+  <div id="floating-messages">
+    {% for message in messages %}
+      <div class="floating-text">{{ message }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<style>
+.floating-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: gold;
+  font-weight: bold;
+  animation: floatUp 2s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes floatUp {
+  0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -150%) scale(1.5); }
+}
+</style>
+
+
+  <!-- User dropdown -->
+  <div class="dropdown" style="position: relative; display: inline-block;">
+    <button class="dropbtn" style="background: none; border: none; cursor: pointer;">
+      {% if user.is_authenticated %}
+        {% if user.profile.avatar %}
+          <img src="{{ user.profile.avatar.url }}" alt="Avatar" style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover;">
+        {% else %}
+          <i class="fas fa-user-circle" style="font-size: 40px; color: white;"></i>
+        {% endif %}
+      {% else %}
+        <i class="fas fa-user-circle" style="font-size: 40px; color: white;"></i>
+      {% endif %}
+    </button>
+
+    <div class="dropdown-content" style="display: none; position: absolute; right: 0; background-color: #1f1f1f; min-width: 160px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1; border-radius: 8px;">
+      {% if user.is_authenticated %}
+        <a href="{% url 'my_profile' %}" style="color: white; padding: 12px 16px; display: block;">{% trans "Профиль" %}</a>
+        <form method="POST" action="{% url 'logout' %}" style="margin: 0;">
+          {% csrf_token %}
+          <button type="submit" class="dropdown-item" style="color: red; background: none; border: none; padding: 12px 16px; text-align: left; width: 100%;">
+            {% trans "Выйти" %}
+          </button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}" class="dropdown-item"
+           style="color: #00bfff; font-weight: bold; padding: 10px 16px; display: block; text-decoration: none;">
+           {%trans "Войти" %}
+        </a>
+        <a href="{% url 'register' %}" class="dropdown-item"
+           style="color: #00ff99; font-weight: bold; padding: 10px 16px; display: block; text-decoration: none;">
+           {%trans "Зарегистрироваться" %}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <script>
+    const dropBtn = document.querySelector('.dropbtn');
+    const dropdown = document.querySelector('.dropdown-content');
+    let dropdownOpen = false;
+
+    dropBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownOpen = !dropdownOpen;
+      dropdown.style.display = dropdownOpen ? 'block' : 'none';
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!dropBtn.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = 'none';
+        dropdownOpen = false;
+      }
+    });
+  </script>
+</nav>
+
+<style>
+  .nav-item-custom {
+    position: relative;
+    font-size: 1.1rem;
+    color: #ffffffb3;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .nav-item-custom::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 0;
+    background-color: #00bfff;
+    transition: width 0.3s ease;
+  }
+  .nav-item-custom:hover::after { width: 100%; }
+  .nav-item-custom:hover { color: #00bfff; }
+</style>
+</header>
+
+<main class="container py-5">
+    {% block content %}{% endblock %}
+</main>
+
+<div class="footer-controls">
+    <a href="{% url 'add_game' %}" class="btn btn-outline-info">
+        <i class="bi bi-plus-lg"></i> {% trans "Add Game" %}
+    </a>
+    <button id="theme-toggle" type="button" class="btn btn-outline-secondary">{% trans "Theme" %}</button>
+</div>
+
+<!-- ✅ Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ✅ Theme toggle / background fix -->
+<script>
+  // Detect if user already has a purchased background (any class starting with bg-)
+  const hasProfileBackground = document.body.className.includes('bg-');
+
+  if (!hasProfileBackground) {
+      const toggleBtn = document.getElementById('theme-toggle');
+      if (toggleBtn) {
+          toggleBtn.addEventListener('click', () => {
+              const body = document.body;
+              if (body.classList.contains('dark-theme')) {
+                  body.classList.remove('dark-theme');
+                  body.classList.add('light-theme');
+                  localStorage.setItem('theme', 'light');
+              } else {
+                  body.classList.remove('light-theme');
+                  body.classList.add('dark-theme');
+                  localStorage.setItem('theme', 'dark');
+              }
+          });
+      }
+
+      window.addEventListener('DOMContentLoaded', () => {
+          const savedTheme = localStorage.getItem('theme');
+          if (savedTheme) {
+              document.body.classList.remove('dark-theme', 'light-theme');
+              document.body.classList.add(savedTheme + '-theme');
+          }
+      });
+  }
+</script>
+
+{% if show_modal %}
+  <script>
+    const authModal = new bootstrap.Modal(document.getElementById('authModal'));
+    authModal.show();
+  </script>
+{% endif %}
+
+
+<div id="ad-container" style="display:none; position:fixed; bottom:20px; right:20px; background:#000; padding:10px; border-radius:8px; z-index:9999;">
+  <span id="ad-close" style="cursor:pointer; color:#fff; float:right;">✖</span>
+  <div id="ad-content"></div>
+</div>
+
+<script>
+  async function fetchAd() {
+    try {
+      const response = await fetch("/get-random-ad/");  // new endpoint you’ll make
+      const ad = await response.json();
+
+      let adHtml = "";
+      if (ad.type === "image") {
+        adHtml = `<a href="${ad.link}" target="_blank"><img src="${ad.file_url}" style="max-width:300px;"></a>`;
+      } else if (ad.type === "video") {
+        adHtml = `<video autoplay muted style="max-width:300px;">
+                    <source src="${ad.file_url}" type="video/mp4">
+                  </video>`;
+      }
+      document.getElementById("ad-content").innerHTML = adHtml;
+
+      const adContainer = document.getElementById("ad-container");
+      adContainer.style.display = "block";
+
+      setTimeout(() => {
+        adContainer.style.display = "none";
+      }, 10000); // hide after 10s
+
+    } catch (err) {
+      console.error("Ad fetch error", err);
+    }
+  }
+
+setTimeout(fetchAd, 5000);
+
+// Then every 3 minutes
+setInterval(fetchAd, 3 * 60 * 1000);
+
+  // Allow manual close
+  document.getElementById("ad-close").onclick = () => {
+    document.getElementById("ad-container").style.display = "none";
+  }
+</script>
+
+
+<!-- ✅ Profile Modal -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="profileModalLabel">{% trans "Добро пожаловать!" %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans 'Закрыть' %}"></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" id="profileTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane" type="button" role="tab">{% trans "Вход" %}</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-tab-pane" type="button" role="tab">{% trans "Регистрация" %}</button>
+          </li>
+        </ul>
+
+        <!-- Tab content -->
+        <div class="tab-content mt-3" id="profileTabContent">
+          <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel">
+            <form method="post" action="{% url 'login' %}">
+              {% csrf_token %}
+              {{ login_form.as_p }}
+              <button type="submit" class="btn btn-primary">{% trans "Войти" %}</button>
+            </form>
+          </div>
+
+          <div class="tab-pane fade" id="register-tab-pane" role="tabpanel">
+            <form method="post" enctype="multipart/form-data" action="{% url 'register' %}">
+              {% csrf_token %}
+              {{ register_form.as_p }}
+              <button type="submit" class="btn btn-success">{% trans "Зарегистрироваться" %}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

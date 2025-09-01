@@ -1,0 +1,274 @@
+{% extends 'core/base.html' %}
+{% load static i18n %}
+
+{% block content %}
+
+<!-- Orbitron font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+<style>
+  :root{
+    --neon: #00ffe1;
+    --neon-2: #57fff0;
+    --neon-shadow: 0 0 6px var(--neon),
+                   0 0 12px var(--neon),
+                   0 0 24px var(--neon),
+                   0 0 48px rgba(0,255,225,.5);
+    --card-bg: rgba(20,20,30,.85);
+  }
+
+  /* Top-right clock */
+  .clock-box {
+    position: fixed;
+    top: 80px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding: 10px 18px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, .25);
+    border: 1px solid rgba(255,255,255,.06);
+    backdrop-filter: blur(6px);
+    z-index: 999;
+  }
+
+  .neon-digits {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    color: var(--neon);
+    text-shadow: var(--neon-shadow);
+    letter-spacing: .06em;
+  }
+
+  .clock-time {
+    font-size: 1.15rem;
+    animation: glowPulse 2.2s ease-in-out infinite alternate;
+  }
+
+  .playtime-badge {
+    font-size: .95rem;
+    padding: .25rem .55rem;
+    border-radius: 10px;
+    background: rgba(0,0,0,.35);
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: var(--neon-shadow);
+    text-transform: uppercase;
+  }
+
+  @keyframes glowPulse{
+    from { text-shadow: 0 0 6px var(--neon), 0 0 12px var(--neon-2); }
+    to   { text-shadow: var(--neon-shadow); }
+  }
+
+  /* Profile layout */
+  .profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+  }
+  .profile-left {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid var(--neon);
+    box-shadow: var(--neon-shadow);
+  }
+  .profile-buttons a {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  .profile-buttons a:hover { transform: scale(1.05); }
+
+  .profile-right {
+    flex: 2;
+    min-width: 300px;
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .profile-info p { margin: 10px 0; font-size: 16px; }
+
+  /* Section styling */
+  .section {
+    margin-top: 50px;
+  }
+  .section h3 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--neon);
+    text-shadow: var(--neon-shadow);
+  }
+
+  /* Games grid */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .game-card {
+    background-color: rgba(30,30,40,.9);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    text-align: center;
+    transition: transform .3s ease;
+  }
+  .game-card:hover { transform: translateY(-5px); }
+  .game-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .review-card {
+    background-color: rgba(30,30,40,.9);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  }
+</style>
+
+<!-- CLOCK + HOURS -->
+<div class="clock-box">
+  {% if total_time_hours %}
+    <div class="neon-digits playtime-badge">{{ total_time_hours }}H</div>
+  {% elif dev_total_hours %}
+    <div class="neon-digits playtime-badge">{{ dev_total_hours }}H</div>
+  {% endif %}
+  <span id="site-clock" class="neon-digits clock-time">--:--:--</span>
+</div>
+
+<div class="profile-container">
+  <div class="profile-left">
+    {% if user.profile.avatar %}
+      <img src="{{ user.profile.avatar.url }}" alt="{% trans 'Avatar' %}" class="profile-avatar">
+    {% else %}
+      <img src="{% static 'img/default-avatar.png' %}" alt="{% trans 'Default avatar' %}" class="profile-avatar">
+    {% endif %}
+
+    <div class="profile-buttons">
+      <a href="{% url 'edit_profile' %}">{% trans "Edit profile" %}</a>
+      <a href="{% url 'upload_avatar' %}">{% trans "Upload avatar" %}</a>
+      <a href="{% url 'delete_account' %}" style="background-color:#dc3545;">{% trans "Delete account" %}</a>
+    </div>
+  </div>
+
+  <div class="profile-right">
+    <h2>{{ user.first_name }}</h2>
+    <div style="display:inline-block; background:linear-gradient(45deg, gold, silver); padding:8px 16px; border-radius:10px; margin:10px 0; font-weight:bold;">
+      🎖️ {% trans "Level" %} 1
+    </div>
+    <div class="profile-info">
+      <p><strong>🗓️ {% trans "Date of registration" %}:</strong> {{ user.date_joined|date:"d.m.Y H:i" }}</p>
+      <p><strong>📧 Email:</strong> {{ user.email }}</p>
+      <p><strong>🌍 {% trans "Country" %}:</strong> {{ user.profile.country }}</p>
+      <p><strong>🔑 {% trans "Last login" %}:</strong> {{ user.last_login|date:"d.m.Y H:i" }}</p>
+      <p class="text-lg font-semibold text-gray-300">
+        {% trans "Balance" %}: <span class="text-cyan-400">{{ user.profile.currency }}</span> 💰
+      </p>
+
+      {% if request.user.is_staff %}
+        <a href="{% url 'advertisement_manage' %}" class="btn btn-warning">{% trans "Manage advertising" %}</a>
+      {% endif %}
+
+      <p><a href="{% url 'my_games' %}" class="btn btn-outline-primary">{% trans "My games" %}</a></p>
+    </div>
+  </div>
+</div>
+
+{% if request.user.profile.role == 'developer' or request.user.profile.role == 'player' %}
+  <a href="{% url 'dashboard' %}" class="btn btn-primary">{% trans "Go to panel" %}</a>
+{% endif %}
+
+{% if user.is_authenticated %}
+  <h5>{% trans "Your Referral Link:" %}</h5>
+  <input type="text"
+         value="{{ request.scheme }}://{{ request.get_host }}{% url 'register' %}?ref={{ user.profile.referral_code }}"
+         readonly
+         onclick="this.select(); document.execCommand('copy');"
+         class="form-control">
+  <small>{% trans "✅ Click to copy & share!" %}</small>
+{% endif %}
+
+
+
+<div class="section">
+  <h3>{% trans "Favorite games" %}</h3>
+  <div class="games-grid">
+    {% for game in favorite_games %}
+      <div class="game-card">
+        <a href="{% url 'game_detail' game.id %}">
+          <img src="{{ game.image.url }}" alt="{{ game.name }}">
+          <h4>{{ game.name }}</h4>
+        </a>
+        <p class="text-sm text-gray-400">{{ game.genre }}</p>
+        <div class="stars">
+          {% for i in "12345"|make_list %}
+            {% if forloop.counter <= game.avg_rating %}
+              <i class="bi bi-star-fill"></i>
+            {% else %}
+              <i class="bi bi-star"></i>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% empty %}
+      <p>{% trans "There are no featured games." %}</p>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="section">
+  <h3>{% trans "My reviews" %}</h3>
+  {% for review in user_reviews %}
+    <div class="review-card">
+      <p><strong>{{ review.game.name }}</strong></p>
+      <p>{{ review.text }}</p>
+      <p><em>{{ review.created_at|date:"d.m.Y" }}</em></p>
+    </div>
+  {% empty %}
+    <p>{% trans "You haven't left any reviews yet." %}</p>
+  {% endfor %}
+</div>
+
+<script>
+(function(){
+  const el = document.getElementById('site-clock');
+  if(!el) return;
+  const pad = n => String(n).padStart(2,'0');
+  function tick(){
+    const d = new Date();
+    el.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+{% endblock %}

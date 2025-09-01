@@ -1,0 +1,186 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<style>
+  body {
+    background-color: #1e1e1e !important;
+    color: #f1f1f1;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .game-container {
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 900px;
+    background-color: #2c2c2c;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .game-container img {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 2px solid #4CAF50;
+  }
+
+  .game-container h1 {
+    font-size: 36px;
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+  }
+
+  .game-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+  }
+
+  .reviews-section {
+    margin-top: 40px;
+  }
+
+  .review {
+    border-top: 1px solid #555;
+    padding: 15px 0;
+  }
+
+  .review:last-child {
+    border-bottom: 1px solid #555;
+  }
+
+  .stars {
+    color: gold;
+    font-size: 20px;
+  }
+
+  .add-review {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #777;
+  }
+
+  .form-control, .btn {
+    margin-bottom: 10px;
+  }
+
+  .star-rating {
+    direction: rtl;
+    font-size: 28px;
+    unicode-bidi: bidi-override;
+    display: flex;
+    gap: 5px;
+  }
+
+  .star-rating input[type="radio"] {
+    display: none;
+  }
+
+  .star-rating label {
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .star-rating input[type="radio"]:checked ~ label,
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    color: gold;
+  }
+</style>
+
+<div class="game-container">
+  <h1>{{ game.name }}</h1>
+  <img src="{{ game.image.url }}" alt="{{ game.name }}">
+  <p>{{ game.description }}</p>
+
+  <p><strong>Source:</strong> {{ game.source }}</p>
+<p><strong>Genre:</strong> {{ game.genre }}</p>
+
+  <!-- ✅ Favorite toggle -->
+<form method="post" action="{% url 'toggle_favorite' game.id %}">
+  {% csrf_token %}
+  {% if game in user.profile.favorite_games.all %}
+    <button type="submit" class="btn btn-danger">💔 Удалить из избранного</button>
+  {% else %}
+    <button type="submit" class="btn btn-warning">⭐ Добавить в избранное</button>
+  {% endif %}
+</form>
+
+
+  <!-- Reviews -->
+<div class="reviews-section">
+  <h3>{% trans "Отзывы игроков:" %}</h3>
+  {% if reviews %}
+    {% for review in reviews %}
+      <div class="review">
+        <div class="stars">
+          {% for i in "12345"|make_list %}
+            {% if forloop.counter <= review.rating %}
+              <i class="bi bi-star-fill"></i>
+            {% else %}
+              <i class="bi bi-star"></i>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <p>{{ review.comment }}</p>
+        <small>— {{ review.user.username }}</small>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>{% trans "Пока нет отзывов. Будь первым!" %}</p>
+  {% endif %}
+</div>
+
+  <!-- Добавить отзыв -->
+  <div class="add-review">
+    <h4>{% trans "Оставить отзыв:" %}</h4>
+    <form method="post">
+      {% csrf_token %}
+
+<!-- ⭐ Summary -->
+{% if total_reviews > 0 %}
+  <div class="summary" style="margin: 20px 0; padding: 15px; border: 1px solid #4CAF50; border-radius: 8px; background:#1a1a1a;">
+    <h4>⭐ Средняя оценка: {{ avg_rating|floatformat:1 }}/5</h4>
+    <p>{{ total_reviews }} отзыв(ов)</p>
+    <div class="stars">
+      {% for i in "12345"|make_list %}
+        {% if forloop.counter <= avg_rating|default:0 %}
+          <i class="bi bi-star-fill"></i>
+        {% else %}
+          <i class="bi bi-star"></i>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% else %}
+  <p><em>Пока нет оценок для этой игры.</em></p>
+{% endif %}
+
+      <div class="mb-3">
+        <label>{% trans "Ваша оценка:" %}</label>
+        <div class="star-rating">
+          {% for value in "54321" %}
+            <input type="radio" name="rating" id="star{{ value }}" value="{{ value }}">
+            <label for="star{{ value }}">★</label>
+          {% endfor %}
+        </div>
+      </div>
+
+
+
+      <div class="mb-3">
+        {{ form.comment.label_tag }}<br>
+        {{ form.comment }}
+      </div>
+
+      <button type="submit" class="btn btn-success">{% trans "Отправить" %}</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
