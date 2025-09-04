@@ -1,4 +1,4 @@
-Greeting
+/* Greeting */
 body.light-theme .welcome-text {
   color: #1e1e1e; /* тёмно-серый — идеально читается на светлом фоне */
 }
@@ -30,7 +30,7 @@ body.dark-theme .welcome-text {
 }
 
 
-Main pages theme
+/* Main page them */
  body.light-theme {
             background-color: #f8f9fa;
             color: #212529;
@@ -83,7 +83,7 @@ Main pages theme
         }
 
 
-Personal profil
+/* Personal profile */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -137,7 +137,7 @@ Personal profil
       color: white;
     }
 
-Select language
+/* Select language  */
 select.language-select {
   background-color: #343a40;
   color: #fff;
