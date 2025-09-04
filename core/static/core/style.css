@@ -320,11 +320,6 @@ CSS for button game
     object-fit: contain;
 }
 
-/* Background classes */
-.bg-forest {
-    background: url("/static/core/backgrounds/forest.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white; /* adjust text color */
 }
 
 .bg-space {
