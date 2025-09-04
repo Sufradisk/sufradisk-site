@@ -1,13 +1,36 @@
-/* Greeting */
-body.light-theme .welcome-text {
-  color: #1e1e1e; /* тёмно-серый — идеально читается на светлом фоне */
+/* ==========================================================================
+   SUFRA / SUFRADISK — Main stylesheet
+   - Organized, no duplicate selectors
+   - Variables at top to tweak theme quickly
+   - Includes ad popup, inventory, navbar, profile, buttons, backgrounds
+   ========================================================================== */
+
+/* -------------------------
+   Theme variables
+   ------------------------- */
+:root{
+  --bg-light: #f8f9fa;
+  --text-light: #212529;
+  --bg-dark: #121212;
+  --text-dark: #e0e0e0;
+  --accent: #17c1e8;
+  --accent-dark: #0ea9cc;
+  --muted: #6c757d;
+  --glass: rgba(255,255,255,0.06);
 }
 
-body.dark-theme .welcome-text {
-  color: #6dd5fa; /* нежный голубой градиентный стиль */
-  /* можно даже добавить светлый фиолетовый оттенок для динамики */
-  text-shadow: 0 0 10px #8e44ad; /* фиолетовое свечение */
+/* ==========================
+   Greeting / Welcome text
+   ========================== */
+body.light-theme .welcome-text {
+  color: #1e1e1e;
 }
+body.dark-theme .welcome-text {
+  color: #6dd5fa;
+  text-shadow: 0 0 10px #8e44ad;
+}
+
+/* nice glow animation for dark-theme welcome text */
 @keyframes glow {
   0% {
     text-shadow: 0 0 5px #6dd5fa, 0 0 10px #6dd5fa, 0 0 15px #8e44ad;
@@ -18,125 +41,92 @@ body.dark-theme .welcome-text {
   100% {
     text-shadow: 0 0 5px #6dd5fa, 0 0 10px #6dd5fa, 0 0 15px #8e44ad;
   }
+}
 
 body.dark-theme .welcome-text {
   font-size: 2.5rem;
-  font-weight: bold;
+  font-weight: 700;
   background: linear-gradient(45deg, #6dd5fa, #8e44ad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: glow 3s infinite;
 }
 
+/* ==========================
+   Main page theme
+   ========================== */
+body.light-theme {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+body.dark-theme {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
 
-/* Main page them */
- body.light-theme {
-            background-color: #f8f9fa;
-            color: #212529;
-        }
-        body.dark-theme {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-        .card {
-            background-color: inherit;
-            color: inherit;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border-radius: 12px;
-        }
-        .btn-primary {
-            background-color: #17c1e8;
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #0ea9cc;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.1);
-        }
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-        }
-        .nav-link:hover {
-            color: #17c1e8 !important;
-            text-decoration: underline;
-        }
-        .footer-controls {
-            position: fixed;
-            bottom: 15px;
-            right: 15px;
-            display: flex;
-            gap: 10px;
-            z-index: 1000;
-        }
+/* Generic card */
+.card {
+  background-color: inherit;
+  color: inherit;
+  border: 1px solid rgba(0, 255, 255, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 12px;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.06);
+}
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
 
-
-/* Personal profile */
+/* ==========================
+   Navbar (merged + cleaned)
+   ========================== */
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
-  background: #20232a;
-  color: white;
   align-items: center;
+  padding: 10px 20px;
+  background: #20232a; /* you can override for dark/light if needed */
+  color: white;
+  z-index: 1000;
 }
 
-.nav-item {
-  margin-right: 15px;
-  color: white;
+.nav-item-custom {
+  position: relative;
+  font-size: 1.1rem;
+  color: #ffffffb3;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
+.nav-item-custom::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+.nav-item-custom:hover::after { width: 100%; }
+.nav-item-custom:hover { color: var(--accent); }
 
-.nav-left .nav-logo {
-  font-weight: bold;
-  font-size: 22px;
-  margin-right: 30px;
+.nav-link i.fa-user-circle {
   color: white;
-}
-
-.nav-right form {
-  display: inline-block;
-  margin-right: 15px;
-}
-
-.avatar-link {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
+  background-color: var(--accent);
   border-radius: 50%;
-  overflow: hidden;
-  background-color: #6c757d;
-  text-align: center;
-  line-height: 40px;
-  color: white;
+  padding: 8px;
   font-size: 24px;
+  transition: 0.3s;
 }
+.nav-link i.fa-user-circle:hover { background-color: #0056b3; }
 
-.avatar-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .avatar-icon {
-      font-size: 30px;
-      line-height: 40px;
-      color: white;
-    }
-
-/* Select language  */
+/* language select */
 select.language-select {
   background-color: #343a40;
   color: #fff;
@@ -147,297 +137,252 @@ select.language-select {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 body.light-theme select.language-select {
-  background-color: #ffffff;
+  background-color: #fff;
   color: #000;
   border: 1px solid #ccc;
 }
 
-.nav-link i.fa-user-circle {
+/* ==========================
+   Footer controls (floating)
+   ========================== */
+.footer-controls {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  gap: 10px;
+  z-index: 2000;
+}
+
+/* Theme toggle button */
+#theme-toggle { cursor: pointer; }
+
+/* ==========================
+   Avatar / Profile
+   ========================== */
+.avatar-link {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--muted);
+  text-align: center;
+  line-height: 40px;
   color: white;
-  background-color: #007bff;
-  border-radius: 50%;
-  padding: 8px;
   font-size: 24px;
-  transition: 0.3s;
+}
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.nav-link i.fa-user-circle:hover {
-  background-color: #0056b3;
-}
-
-
-
+/* mini avatar used on profile page */
 .mini-avatar img {
   width: 128px;
   height: 128px;
   object-fit: cover;
-  border-radius: 6px; /* это даёт квадрат с мягкими углами */
+  border-radius: 6px;
   border: 1px solid #ccc;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 2px rgba(0,0,0,0.15);
   transition: transform 0.2s ease;
 }
-
 .mini-avatar img:hover {
   transform: scale(1.05);
-  border-color: #00bfff;
+  border-color: var(--accent);
 }
 
-
-.profile-dropdown {
-  position: relative;
-  display: inline-block;
+/* ==========================
+   Inventory list
+   ========================== */
+.inventory-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
 }
-
-.profile-dropdown img {
-  width: 128px;
-  height: 128px;
+.inventory-list li {
+  background: rgba(255,255,255,0.02);
+  padding: 12px;
   border-radius: 10px;
-  object-fit: cover;
-  cursor: pointer;
-  border: 2px solid #ccc;
-  box-shadow: 0 0 4px rgba(0,0,0,0.1);
-}
-
-.navbar {
   display: flex;
-  justify-content: space-between;
+  gap: 12px;
   align-items: center;
-  padding: 10px 20px;
 }
+.inventory-list img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
+.inventory-list .used { color: #28a745; font-weight: 700; }
+.inventory-list .btn { margin-left: auto; }
 
-.nav-left a,
-.nav-right a {
-  margin: 0 10px;
-}
-
-.ad-block {
-  border: 2px dashed #888;
-  padding: 20px;
-  margin: 20px 0;
-  background-color: #f9f9f9;
-  text-align: center;
-}
-
-.ad-content {
-  font-weight: bold;
-  color: #444;
-}
-
-CSS for button game
-.game-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.2s ease;
-}
-.game-card:hover {
-  transform: translateY(-5px);
-}
-.game-image {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-.game-title {
-  font-size: 20px;
-  margin-top: 10px;
-  font-weight: bold;
-}
-.game-description {
-  font-size: 14px;
-  color: #666;
-  margin: 10px 0;
-}
-.play-button {
-  display: inline-block;
-  background-color: #1e90ff;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-.play-button:hover {
-  background-color: #0f78d1;
-  transform: scale(1.05);
-}
-
-/* Добавить в style или CSS-файл */
-.profile-clock-widget {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 6px 12px;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  font-family: 'Courier New', monospace;
-  color: #fff;
-  z-index: 10;
-}
-
-.clock-icon {
-  font-size: 18px;
-}
-
-.animated-clock {
-  font-size: 16px;
-  letter-spacing: 1px;
-}
-
-.clock-box {
-    position: fixed;
-    top: 80px;   /* ⬅ move down */
-    right: 30px;
-
-  background: rgba(0, 255, 255, 0.08);
-  padding: 10px 18px;
-  border-radius: 15px;
-  font-size: 20px;
-  color: #00ffff;
-  font-family: 'Courier New', monospace;
-  box-shadow: 0 0 12px #00f0ff;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  z-index: 999;
-}
-.ad-media {
-    max-width: 500px;
-    max-height: 300px;
-    object-fit: contain;
-}
-
-}
-
-.bg-space {
-    background: url("/static/core/backgrounds/space.jpeg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-ocean {
-    background: url("/static/core/backgrounds/ocean.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-neon-controller {
-    background: url("/static/core/backgrounds/portal-neon.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-sufra-background {
-    background: url("/static/core/backgrounds/sufra-background.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-purple-neon {
-    background: url("/static/core/backgrounds/purple-neon.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-neon2 {
-    background: url("/static/core/backgrounds/conroll.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-white- {
-    background: url("/static/core/backgrounds/white-space.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-s {
-    background: url("/static/core/backgrounds/s.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-controller {
-    background: url("/static/core/backgrounds/controller.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-portal {
-    background: url("/static/core/backgrounds/portal.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-portal2 {
-    background: url("/static/core/backgrounds/portal2.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-joystick {
-    background: url("/static/core/backgrounds/joystick.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-greeen {
-    background: url("/static/core/backgrounds/green.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-under-moon {
-    background: url("/static/core/backgrounds/under-moon.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-.bg-white-joystick {
-    background: url("/static/core/backgrounds/white.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-
-
-
-
-/* Buttons for offers in shop */
+/* ==========================
+   Offer button (shop)
+   ========================== */
 .offer-button {
   display: inline-block;
-  background: linear-gradient(135deg, #17c1e8, #0ea9cc);
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color: white;
   padding: 10px 20px;
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 700;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
-
 .offer-button:hover:not(:disabled) {
-  background: linear-gradient(135deg, #0ea9cc, #007a99);
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, var(--accent-dark), #007a99);
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
 }
-
 .offer-button:disabled {
   background: #6c757d;
   cursor: not-allowed;
-  box-shadow: none;
+  opacity: 0.85;
+}
+
+/* ==========================
+   Game card / play button
+   ========================== */
+.game-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+.game-card:hover { transform: translateY(-5px); }
+.game-image { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+.play-button {
+  display: inline-block;
+  background-color: #1e90ff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.play-button:hover { transform: scale(1.03); }
+
+/* ==========================
+   Ads (popup overlay and frame-ad)
+   ========================== */
+/* Popup container (the one that appears in bottom-right) */
+#ad-container{
+  display:none;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background: rgba(0,0,0,0.9);
+  padding:12px;
+  border-radius:10px;
+  z-index:9999;
+  max-width: 520px; /* increased size for better visibility */
+  width: calc(100% - 40px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+#ad-container .close {
+  position:absolute;
+  top:6px;
+  right:8px;
+  color:#fff;
+  cursor:pointer;
+  font-size:18px;
+}
+#ad-content { display:flex; align-items:center; justify-content:center; padding:6px; }
+/* media inside ad */
+#ad-content img, #ad-content video, #ad-content iframe {
+  max-width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  border-radius: 8px;
+  display:block;
+}
+
+/* Frame ad placeholder (for ads that are embedded in page layout) */
+.ad-block {
+  border: 2px dashed #888;
+  padding: 18px;
+  margin: 20px 0;
+  text-align: center;
+  background-color: rgba(255,255,255,0.02);
+}
+.ad-content { font-weight: 700; color: #fff; }
+
+/* small helper to control ad media sizes */
+.ad-media { max-width: 500px; max-height: 300px; object-fit: contain; }
+
+/* ==========================
+   Profile clock widget
+   ========================== */
+.profile-clock-widget {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background: rgba(255,255,255,0.06);
+  padding:6px 12px;
+  border-radius:10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+  font-family: 'Courier New', monospace;
+  color: #fff;
+  z-index: 1200;
+}
+.clock-box {
+  position: fixed;
+  top: 80px;
+  right: 30px;
+  background: rgba(0,255,255,0.06);
+  padding: 10px 18px;
+  border-radius: 15px;
+  font-size: 16px;
+  color: #00ffff;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 0 12px #00f0ff;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  z-index:999;
+}
+
+/* ==========================
+   Background theme classes
+   (grouped; ensure file names match your static files)
+   ========================== */
+.bg-space { background: url("/static/core/backgrounds/space.jpeg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-ocean { background: url("/static/core/backgrounds/ocean.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-neon-controller { background: url("/static/core/backgrounds/portal-neon.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-sufra-background { background: url("/static/core/backgrounds/sufra-background.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-purple-neon { background: url("/static/core/backgrounds/purple-neon.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-neon2 { background: url("/static/core/backgrounds/conroll.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-white-space { background: url("/static/core/backgrounds/white-space.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-controller { background: url("/static/core/backgrounds/controller.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-portal { background: url("/static/core/backgrounds/portal.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-portal2 { background: url("/static/core/backgrounds/portal2.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-joystick { background: url("/static/core/backgrounds/joystick.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-green { background: url("/static/core/backgrounds/green.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+.bg-under-moon { background: url("/static/core/backgrounds/under-moon.jpg") no-repeat center center fixed; background-size: cover; color: white; }
+
+/* ==========================
+   Small utilities
+   ========================== */
+.hidden { display:none !important; }
+.text-muted { color: #9aa3a8; }
+.center { text-align:center; }
+
+/* ==========================
+   Accessibility / Responsive tweaks
+   ========================== */
+@media (max-width: 600px) {
+  .card-img-top { height: 140px; }
+  .inventory-list { grid-template-columns: 1fr; }
+  #ad-container { right: 10px; left: 10px; bottom: 10px; max-width: calc(100% - 20px); }
 }
