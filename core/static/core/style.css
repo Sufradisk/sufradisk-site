@@ -18,7 +18,6 @@ body.dark-theme .welcome-text {
   100% {
     text-shadow: 0 0 5px #6dd5fa, 0 0 10px #6dd5fa, 0 0 15px #8e44ad;
   }
-}
 
 body.dark-theme .welcome-text {
   font-size: 2.5rem;
