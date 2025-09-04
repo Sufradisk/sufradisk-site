@@ -340,7 +340,7 @@ CSS for button game
 }
 
 .bg-neon-controller {
-    background: url("/static/core/backgrounds/Prtal neon.jpg") no-repeat center center fixed;
+    background: url("/static/core/backgrounds/portal-neon.jpg") no-repeat center center fixed;
     background-size: cover;
     color: white;
 }
@@ -394,25 +394,25 @@ CSS for button game
 }
 
 .bg-joystick {
-    background: url("/static/core/backgrounds/Jooystick.jpg") no-repeat center center fixed;
+    background: url("/static/core/backgrounds/joystick.jpg") no-repeat center center fixed;
     background-size: cover;
     color: white;
 }
 
 .bg-greeen {
-    background: url("/static/core/backgrounds/greeen.jpg") no-repeat center center fixed;
+    background: url("/static/core/backgrounds/green.jpg") no-repeat center center fixed;
     background-size: cover;
     color: white;
 }
 
 .bg-under-moon {
-    background: url("/static/core/backgrounds/under moon.jpg") no-repeat center center fixed;
+    background: url("/static/core/backgrounds/under-moon.jpg") no-repeat center center fixed;
     background-size: cover;
     color: white;
 }
 
 .bg-white-joystick {
-    background: url("/static/core/backgrounds/white-j2.jpg") no-repeat center center fixed;
+    background: url("/static/core/backgrounds/white.jpg") no-repeat center center fixed;
     background-size: cover;
     color: white;
 }
