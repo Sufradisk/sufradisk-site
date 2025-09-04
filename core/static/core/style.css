@@ -412,7 +412,7 @@ CSS for button game
 }
 
 .bg-white-joystick {
-    background: url("/static/core/backgrounds/white-j.jpg") no-repeat center center fixed;
+    background: url("/static/core/backgrounds/white-j2.jpg") no-repeat center center fixed;
     background-size: cover;
     color: white;
 }
