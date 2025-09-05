@@ -106,10 +106,10 @@ WSGI_APPLICATION = 'Sufra.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sufra_db',
-        'USER': 'root',
-        'PASSWORD': 'Khan_bek2008',
-        'HOST': '127.0.0.1',
+        'NAME': 'Likomin$sufra_db',   # PythonAnywhere requires username$dbname
+        'USER': 'Likomin',            # your PythonAnywhere username
+        'PASSWORD': 'Khan_bek2008',   # set this in the PA Databases tab
+        'HOST': 'Likomin.mysql.pythonanywhere-services.com',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
