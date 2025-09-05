@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-awv_u**14xyc9*v3h3q1*2njt6pau@x30mb13%(sxod=-g6cqa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["sufradisk.com", "www.sufradisk.com", "127.0.0.1", "localhost"]
 
 
 
