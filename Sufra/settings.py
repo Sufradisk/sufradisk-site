@@ -106,10 +106,10 @@ WSGI_APPLICATION = 'Sufra.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Likomin$sufra_db',   # must include your username prefix!
-        'USER': 'Likomin',            # or 'Likomin' if that’s your DB user
-        'PASSWORD': 'Khan_bek2008',   # your real DB password
-        'HOST': 'likomin.mysql.pythonanywhere-services.com',  # all lowercase!
+        'NAME': 'Likomin$default',
+        'USER': 'Likomin',
+        'PASSWORD': 'Khan_bek2008',  # the one you set in the MySQL tab
+        'HOST': 'Likomin.mysql.pythonanywhere-services.com',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
@@ -117,6 +117,7 @@ DATABASES = {
         }
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
