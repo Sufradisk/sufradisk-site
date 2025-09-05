@@ -107,7 +107,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Likomin$sufra_db',   # must include your username prefix!
-        'USER': 'root',            # or 'Likomin' if that’s your DB user
+        'USER': 'Likomin',            # or 'Likomin' if that’s your DB user
         'PASSWORD': 'Khan_bek2008',   # your real DB password
         'HOST': 'likomin.mysql.pythonanywhere-services.com',  # all lowercase!
         'PORT': '3306',
